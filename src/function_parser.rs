@@ -123,10 +123,13 @@ pub enum ValidInFunctionBody {
 // we'e soon move this to its own file
 
 
+use crate::type_parser::Type_;
+
 pub struct Function {
     pub name: String,
     pub params: Vec<Param>,
     pub body: Vec<ValidInFunctionBody>,
+    pub return_type: Type_
 }
 
 impl Function {
@@ -134,10 +137,8 @@ impl Function {
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('(');
         let params = comp![Param::new(t); until t.optionaly_expect_char(')')];
-        let mut res = Self { name, params, body: Vec::new() };
-        dbg!("about to parse_body");
-        let word_len = t.peek_next_word().len();
-        t.display_and_highlight_current_token(t.parse_index, t.parse_index + word_len);
+        let return_type = Type_::new(t);
+        let mut res = Self { name, params, body: Vec::new(), return_type };
         res.parse_body(t);
         res
     }
@@ -162,6 +163,7 @@ impl Function {
                 
             }
         }
+        self.return_type.display();
         println!("}}");
     }
 

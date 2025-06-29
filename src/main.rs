@@ -76,7 +76,7 @@ fn main() {
             string email
         }
 
-        function sub(int a = 9, int b = 2) {
+        function sub(int a = 9, int b = 2) Person<int> {
             let int a
             let int b
         }
