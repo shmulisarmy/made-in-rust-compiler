@@ -1,3 +1,4 @@
+mod If_parser;
 mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
@@ -20,6 +21,7 @@ use expression::*;
 use function_parser::*;
 
 use crate::while_parser::While;
+use crate::If_parser::If;
 // enum SyntaxNode{
 //     Class(Class),
 //     Function(Function),
@@ -82,6 +84,11 @@ fn main() {
             b = 2
         }
 
+        if (a + b){
+            a  = 9
+            b = 2
+        }
+
         "
         .to_string(),
         parse_index: 0,
@@ -105,6 +112,10 @@ fn main() {
             "while" => {
                 let _while = While::new(&mut t);
                 _while.display();
+            },
+            "if" => {
+                let _if = If::new(&mut t);
+                _if.display();
             },
             _ => {
                 t.expect_char('\n');
