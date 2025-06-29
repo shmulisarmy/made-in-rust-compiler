@@ -64,7 +64,7 @@ fn main() {
             b = 2
         }
 
-        if (a + b){
+        if a + b{
             a  = 9
             b = 2
         }

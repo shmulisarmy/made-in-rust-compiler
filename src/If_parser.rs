@@ -32,9 +32,13 @@ pub struct If {
 
 impl If {
     pub fn new(t: &mut Tokenizer) -> Self {
-        t.expect_char('(');
-        let condition = Expression::new(t, ',', ')');
-        t.expect_char(')');
+        let condition = if t.optionaly_expect_char('('){
+            let res = Expression::new(t, ',', ')');
+            t.expect_char(')');
+            res
+        }   else {
+            Expression::new(t, '\n', '{')
+        };
 
         t.eat_all_spaces();
 
