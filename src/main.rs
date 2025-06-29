@@ -1,3 +1,4 @@
+mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
 
@@ -17,6 +18,8 @@ use tokenizer::*;
 
 use expression::*;
 use function_parser::*;
+
+use crate::while_parser::While;
 // enum SyntaxNode{
 //     Class(Class),
 //     Function(Function),
@@ -73,6 +76,12 @@ fn main() {
             let int b
         }
 
+
+        while (a + b){
+            a  = 9
+            b = 2
+        }
+
         "
         .to_string(),
         parse_index: 0,
@@ -92,6 +101,10 @@ fn main() {
             "function" => {
                 let _function = Function::new(&mut t);
                 _function.display();
+            },
+            "while" => {
+                let _while = While::new(&mut t);
+                _while.display();
             },
             _ => {
                 t.expect_char('\n');
