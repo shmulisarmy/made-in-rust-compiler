@@ -1,19 +1,18 @@
-mod linkedList;
+use std::sync::{LazyLock, Mutex};
+
+
 mod precedence_order;
 mod expression;
 mod constants;
 mod macros;
-mod mapTrie;
 mod token;
 mod tokenizer;
 mod trie;
+mod mapTrie;
+mod linkedList;
 
-use std::string;
-
-use mapTrie::MapTrie;
 use token::*;
 use tokenizer::*;
-use trie::Trie;
 
 use expression::*;
 // enum SyntaxNode{
@@ -32,26 +31,39 @@ use expression::*;
 
 
 
+use crate::expression::Expression;
 
 
 
 
-
-#[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 struct Field {
     name: String,
     type_: String,
-    // default_value: ,
+    default_value: Expression,
 }
 
 impl Field {
     fn new(t: &mut Tokenizer) -> Self {
-        let res = Self {
-            type_: t.expect(TokenType::IDENTIFIER),
-            name: t.expect(TokenType::IDENTIFIER),
-        };
-        t.eat_all_spaces();
-        res
+
+        let type_ = t.expect(TokenType::IDENTIFIER);
+        let name = t.expect(TokenType::IDENTIFIER);
+        if t.optionaly_expect_char('=') {
+            let default_value = Expression::new(t, '\n', '\n');
+            t.eat_all_spaces();
+            return Self {
+                name,
+                type_,
+                default_value,
+            };
+        } else {
+            t.eat_all_spaces();
+            return Self {
+                name,
+                type_,
+                default_value: Expression(ExpressionPiece::Placeholder(false)),
+            };
+        }
     }
 }
 
@@ -78,6 +90,13 @@ impl Class {
         println!("}}");
     }
 }
+
+
+
+
+static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| {
+    Mutex::new(Vec::new())
+});
 
 
 

@@ -101,11 +101,22 @@ impl MapTrie {
     }
 }
 
-fn main() {
-    let mut t = MapTrie::new();
-    println!("{}", t.is_word(&"!==".to_string()));
-    t.insert(&"!==".to_string());
-    t.insert(&"!=".to_string());
-    println!("{}", t.is_word(&"!==".to_string()));
-    dbg!(t.greety(&"!==".to_string()));
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_() {
+        let mut t = MapTrie::new();
+        assert!(!t.is_word(&"!=".to_string()));
+        t.insert(&"!=".to_string());
+        assert!(t.is_word(&"!=".to_string()));
+        assert_eq!(t.greety(&"!==".to_string()), "!=");
+        t.insert(&"!==".to_string());
+        assert_eq!(t.greety(&"!==".to_string()), "!==");
+
+    }
+    
 }
+

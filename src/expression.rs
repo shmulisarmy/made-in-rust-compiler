@@ -67,6 +67,7 @@ pub enum  ExpressionPiece {
     StringLiteral(String),
     NumberLiteral(String),
     Operator(String),
+    Placeholder(bool),
 }
 
 
