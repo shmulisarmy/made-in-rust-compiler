@@ -44,9 +44,9 @@ macro_rules! comp {
 #[macro_use]
 #[macro_export]
 macro_rules! until {
-    (cond:expr; action:block) => {
-        while !cond {
-            action
+    ($cond:expr; $action:block) => {
+        while !$cond {
+            $action
         }
     };
 }

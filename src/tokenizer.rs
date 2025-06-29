@@ -48,12 +48,12 @@ impl Tokenizer {
         }
     }
 
-    pub fn peek_next_word(&mut self) -> String {
+    pub fn peek_next_word(&mut self) -> &str {
         let mut peek_index = self.parse_index;
-        while self.in_range() && self.current_char().is_alphanumeric() {
+        while self.in_range() && self.code.chars().nth(peek_index).unwrap().is_alphabetic() {
             peek_index += 1;
         }
-        return self.code[self.parse_index..peek_index].to_string();
+        return &self.code[self.parse_index..peek_index];
     }
 
     pub fn next_in(&mut self, chars: &Vec<char>) -> String {
@@ -160,5 +160,10 @@ impl Tokenizer {
                 }
             }
             return &self.code[start..self.parse_index];
+    }
+    pub fn display_and_highlight_current_token(&self, start_index: Int, end_index: Int) {
+        println!("{}---{}---{}", &self.code[0..start_index], &self.code[start_index..end_index], &self.code[end_index..self.code.len()]);
+
+
     }
 }

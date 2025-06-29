@@ -68,15 +68,16 @@ fn main() {
             string email
         }
 
-        function sub(int a = 9, int b = 2)
-        function add(int a = 9, int b = sub(3*7))
-
-
+        function sub(int a = 9, int b = 2) {
+            let int a
+            let int b
+        }
 
         "
         .to_string(),
         parse_index: 0,
     };
+    // function add(int a = 9, int b = sub(3*7))
 
 
     while t.in_range() {
