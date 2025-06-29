@@ -2,7 +2,7 @@ mod If_parser;
 mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
-
+mod type_parser;
 mod precedence_order;
 mod expression;
 mod constants;
@@ -33,6 +33,9 @@ use crate::If_parser::If;
 //     // StringLiteral(Literal),
 //     // NumberLiteral(Literal),
 // }
+
+
+
 
 
 

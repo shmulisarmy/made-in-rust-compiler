@@ -1,10 +1,11 @@
-/Users/shmuli/repositories/rust-compiler-2/target/debug/deps/rust_compiler_2-61dc73fe4a308500: src/main.rs src/If_parser.rs src/while_parser.rs src/precedence_order.rs src/expression.rs src/constants.rs src/macros.rs src/token.rs src/tokenizer.rs src/trie.rs src/mapTrie.rs src/linkedList.rs src/function_parser.rs src/class_parser.rs
+/Users/shmuli/repositories/rust-compiler-2/target/debug/deps/rust_compiler_2-61dc73fe4a308500: src/main.rs src/If_parser.rs src/while_parser.rs src/type_parser.rs src/precedence_order.rs src/expression.rs src/constants.rs src/macros.rs src/token.rs src/tokenizer.rs src/trie.rs src/mapTrie.rs src/linkedList.rs src/function_parser.rs src/class_parser.rs
 
-/Users/shmuli/repositories/rust-compiler-2/target/debug/deps/rust_compiler_2-61dc73fe4a308500.d: src/main.rs src/If_parser.rs src/while_parser.rs src/precedence_order.rs src/expression.rs src/constants.rs src/macros.rs src/token.rs src/tokenizer.rs src/trie.rs src/mapTrie.rs src/linkedList.rs src/function_parser.rs src/class_parser.rs
+/Users/shmuli/repositories/rust-compiler-2/target/debug/deps/rust_compiler_2-61dc73fe4a308500.d: src/main.rs src/If_parser.rs src/while_parser.rs src/type_parser.rs src/precedence_order.rs src/expression.rs src/constants.rs src/macros.rs src/token.rs src/tokenizer.rs src/trie.rs src/mapTrie.rs src/linkedList.rs src/function_parser.rs src/class_parser.rs
 
 src/main.rs:
 src/If_parser.rs:
 src/while_parser.rs:
+src/type_parser.rs:
 src/precedence_order.rs:
 src/expression.rs:
 src/constants.rs:
