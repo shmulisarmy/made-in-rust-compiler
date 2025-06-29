@@ -53,9 +53,9 @@ fn main() {
             string email = \"hello world\"
         }
 
-        function sub(int a = 9, int b = 2) Person<int> {
-            let [][]int operation_map
-            let function<(int, char), void> callback
+        function sub(int a = 9, int b = 2) Person<int?> {
+            let [][string]int? operation_map
+            let function<(int, char), void>? callback
         }
 
 
