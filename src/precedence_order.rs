@@ -1,14 +1,10 @@
 use crate::expression::Expression;
 use crate::linkedList::*;
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
     // #[test]
-
-
 }
 
 static OPERAND_CHARS: &[char] = &['+', '-', '*', '/', '%', '=', '!', '&', '|', '(', ')'];
@@ -32,16 +28,13 @@ static OPERATOR_PRECEDENCE: LazyLock<std::collections::HashMap<String, u8>> = La
     map
 });
 
-
 use std::fmt::Display;
-
 
 use crate::expression::ExpressionPiece;
 use crate::expression::FunctionCall;
 use crate::expression::OperatorToString;
 
-
-fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex)->bool {
+fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) -> bool {
     let double_next = ll.get_two_down(node_index);
     if double_next.is_none() {
         return false;
@@ -54,10 +47,7 @@ fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeInd
         }
     }
     false
-    
-    
 }
-
 
 pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) {
     while two_down_is_greater(ll, node_index) {
@@ -66,14 +56,23 @@ pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIn
 
     let prev = ll.storage[node_index].prev;
     let next = ll.storage[node_index].next;
-    ll.storage[node_index].value = ExpressionPiece::FunctionCall(
-        FunctionCall{name: OperatorToString(&ll.storage[node_index].value),
-        params: vec![ 
-            Expression(ll.storage[prev.expect("there must be some kind of value/expression before an operator")].value.clone()), 
-            Expression(ll.storage[next.expect("there must be some kind of value/expression after an operator")].value.clone())
-        ]
-    }
-    );
+    ll.storage[node_index].value = ExpressionPiece::FunctionCall(FunctionCall {
+        name: OperatorToString(&ll.storage[node_index].value),
+        params: vec![
+            Expression(
+                ll.storage
+                    [prev.expect("there must be some kind of value/expression before an operator")]
+                .value
+                .clone(),
+            ),
+            Expression(
+                ll.storage
+                    [next.expect("there must be some kind of value/expression after an operator")]
+                .value
+                .clone(),
+            ),
+        ],
+    });
     ll.remove(prev.unwrap());
     ll.remove(next.unwrap());
 }

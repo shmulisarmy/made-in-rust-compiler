@@ -1,14 +1,9 @@
-use std::fmt::Display;
-use crate::tokenizer::Tokenizer;
-use crate::token::TokenType;
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
-
-
-
-
-
-
+use crate::token::TokenType;
+use crate::tokenizer::Tokenizer;
+use std::fmt::Display;
+use crate::type_parser::Type_;
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
         {
@@ -31,17 +26,11 @@ macro_rules! comp {
 
 }
 
-
-
-
-
-
-
 #[derive(Debug)]
 pub struct Param {
     pub name: String,
     pub type_: String,
-    pub default_value: Expression
+    pub default_value: Expression,
 }
 
 impl Param {
@@ -70,24 +59,17 @@ impl Param {
     }
 }
 
-
-
-
-
-
-
 // we'e soon move this to its own file
 #[derive(Debug, Clone, PartialEq, Eq, Ord, PartialOrd)]
 pub struct Var {
     name: String,
-    type_: String,
-    default_value: Expression
+    type_: Type_,
+    default_value: Expression,
 }
-
 
 impl Var {
     fn new(t: &mut Tokenizer) -> Self {
-        let type_ = t.expect(TokenType::IDENTIFIER).to_string();
+        let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, '\n', '}'); //} is bc for now this appears in a function body wich ends with }
@@ -109,6 +91,9 @@ impl Var {
             };
         }
     }
+    fn display(&self) {
+        println!("Var {} {}", self.type_.to_string(), self.name);
+    }
 }
 
 
@@ -123,13 +108,11 @@ pub enum ValidInFunctionBody {
 // we'e soon move this to its own file
 
 
-use crate::type_parser::Type_;
-
 pub struct Function {
     pub name: String,
     pub params: Vec<Param>,
     pub body: Vec<ValidInFunctionBody>,
-    pub return_type: Type_
+    pub return_type: Type_,
 }
 
 impl Function {
@@ -138,7 +121,12 @@ impl Function {
         t.expect_char('(');
         let params = comp![Param::new(t); until t.optionaly_expect_char(')')];
         let return_type = Type_::new(t);
-        let mut res = Self { name, params, body: Vec::new(), return_type };
+        let mut res = Self {
+            name,
+            params,
+            body: Vec::new(),
+            return_type,
+        };
         res.parse_body(t);
         res
     }
@@ -150,17 +138,15 @@ impl Function {
         println!(")");
         for field in &self.body {
             match field {
-                
                 ValidInFunctionBody::Expression(expression) => {
                     println!("{:?}", expression);
-            },
+                }
                 ValidInFunctionBody::FunctionCall(function_call) => {
                     println!("{:?}", function_call);
-            },
+                }
                 ValidInFunctionBody::Var(var) => {
                     println!("{:?}", var);
-            }
-                
+                }
             }
         }
         self.return_type.display();
@@ -171,7 +157,7 @@ impl Function {
         t.expect_char('{');
         t.eat_all_spaces();
         dbg!(t.peek_next_word());
-        while !t.optionaly_expect_char('}'){
+        while !t.optionaly_expect_char('}') {
             t.eat_all_spaces();
             dbg!(t.peek_next_word());
             match t.peek_next_word() {
@@ -180,13 +166,13 @@ impl Function {
                     t.expect(TokenType::KEYWORD);
                     let var = Var::new(t);
                     self.body.push(ValidInFunctionBody::Var(var));
-                },
+                }
                 "let" => {
                     println!("found token let");
                     t.expect(TokenType::KEYWORD);
                     let var = Var::new(t);
                     self.body.push(ValidInFunctionBody::Var(var));
-                },
+                }
                 _ => {
                     println!("didnt find token const or let");
                     let expression = Expression::new(t, '\n', '}');
@@ -196,8 +182,6 @@ impl Function {
         }
     }
 }
-
-
 
 #[cfg(test)]
 mod tests {
@@ -215,7 +199,6 @@ mod tests {
             parse_index: 0,
         };
 
-
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
 
         let _function = Function::new(&mut t);
@@ -228,9 +211,7 @@ mod tests {
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
-        
     }
-
 
     #[test]
     fn test_function_parser_that_having_default_values_dont_break_it() {
@@ -244,7 +225,6 @@ mod tests {
             parse_index: 0,
         };
 
-
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
 
         let _function = Function::new(&mut t);
@@ -257,7 +237,6 @@ mod tests {
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
-        
     }
     #[test]
     fn test_that_parsing_function_body_doesnt_panic() {
@@ -275,7 +254,6 @@ mod tests {
             parse_index: 0,
         };
 
-
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
 
         let _function = Function::new(&mut t);
@@ -288,15 +266,24 @@ mod tests {
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
-        
     }
+    #[test]
+    fn post_type_system_upgrade_var_test() {
+        let mut t = Tokenizer {
+            code: "
+                const []int  a = 9          
+    
+    
+            "
+            .to_string(),
+            parse_index: 0,
+        };
+
+        assert_eq!(t.expect(TokenType::KEYWORD), "const");
+        let var = Var::new(&mut t);
+        var.display();
+        assert_eq!(var.name, "a");
 }
-
-
-
-
-
-
-
+}
 
 

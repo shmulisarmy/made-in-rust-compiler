@@ -18,10 +18,10 @@ pub struct LinkedList<T> {
 
 impl<T> LinkedList<T> {
     pub fn new() -> Self {
-        Self { 
-            storage: Vec::new(), 
-            head: None, 
-            tail: None 
+        Self {
+            storage: Vec::new(),
+            head: None,
+            tail: None,
         }
     }
 
@@ -31,10 +31,10 @@ impl<T> LinkedList<T> {
             prev: self.tail,
             next: None,
         };
-        
+
         self.storage.push(node);
-        let node_index = self.storage.len()-1;
-        
+        let node_index = self.storage.len() - 1;
+
         // Update the previous tail's next pointer
         if let Some(tail_index) = self.tail {
             self.storage[tail_index].next = Some(node_index);
@@ -42,7 +42,7 @@ impl<T> LinkedList<T> {
             // This is the first node
             self.head = Some(node_index);
         }
-        
+
         self.tail = Some(node_index);
         node_index
     }
@@ -50,53 +50,56 @@ impl<T> LinkedList<T> {
     pub fn link(&mut self, prev_index: NodeIndex, next_index: NodeIndex) {
         // Ensure indices are valid
         if prev_index >= self.storage.len() || next_index >= self.storage.len() {
-            panic!("Invalid node index, the node index is greater than the node list, (either the node list got shrunk or your using a node from one linkedList on a another)");
+            panic!(
+                "Invalid node index, the node index is greater than the node list, (either the node list got shrunk or your using a node from one linkedList on a another)"
+            );
         }
-        
+
         // Update the previous node's next pointer
         self.storage[prev_index].next = Some(next_index);
-        
+
         // Update the next node's prev pointer
         self.storage[next_index].prev = Some(prev_index);
     }
 
     pub fn remove(&mut self, node_index: NodeIndex) {
         if node_index >= self.storage.len() {
-            panic!("Invalid node index, the node index is greater than the node list, (either the node list got shrunk or your using a node from one linkedList on a another)");
+            panic!(
+                "Invalid node index, the node index is greater than the node list, (either the node list got shrunk or your using a node from one linkedList on a another)"
+            );
         }
-        
+
         let node = &self.storage[node_index];
         let prev_index = node.prev;
         let next_index = node.next;
-        
+
         // Update head if removing the head node
         if self.head == Some(node_index) {
             self.head = next_index;
         }
-        
+
         // Update tail if removing the tail node
         if self.tail == Some(node_index) {
             self.tail = prev_index;
         }
-        
+
         // Link the previous and next nodes together
         if let Some(prev) = prev_index {
             if prev < self.storage.len() {
                 self.storage[prev].next = next_index;
             }
         }
-        
+
         if let Some(next) = next_index {
             if next < self.storage.len() {
                 self.storage[next].prev = prev_index;
             }
-        }        
+        }
     }
 
     pub fn remove_neighbours(&mut self, node_index: NodeIndex) {
         self.remove(self.storage[node_index].prev.unwrap());
         self.remove(self.storage[node_index].next.unwrap());
-        
     }
 
     pub fn get_two_down(&self, node_index: NodeIndex) -> Option<NodeIndex> {
@@ -153,11 +156,6 @@ impl<'a, T> Iterator for LinkedListIterator<'a, T> {
     }
 }
 
-
-
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -188,5 +186,4 @@ mod tests {
         list.remove(node1);
         assert_eq!(list.get(node2), Some(&"second"));
     }
-
 }

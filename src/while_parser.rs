@@ -3,8 +3,6 @@ use crate::tokenizer::Tokenizer;
 
 use crate::expression::Expression;
 
-
-
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
         {
@@ -55,8 +53,6 @@ impl While {
     }
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -74,10 +70,8 @@ mod tests {
             parse_index: 0,
         };
 
-
         assert_eq!(t.expect(TokenType::KEYWORD), "while");
         let _while = While::new(&mut t);
         assert_eq!(_while.body.len(), 2);
-        
     }
 }

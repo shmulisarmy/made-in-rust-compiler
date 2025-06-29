@@ -101,7 +101,6 @@ impl MapTrie {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -115,8 +114,5 @@ mod tests {
         assert_eq!(t.greety(&"!==".to_string()), "!=");
         t.insert(&"!==".to_string());
         assert_eq!(t.greety(&"!==".to_string()), "!==");
-
     }
-    
 }
-

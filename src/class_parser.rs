@@ -1,11 +1,9 @@
 use std::collections::HashMap;
 
-use crate::tokenizer::Tokenizer;
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
 use crate::token::TokenType;
-
-
+use crate::tokenizer::Tokenizer;
 
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
@@ -29,7 +27,6 @@ macro_rules! comp {
 
 }
 
-
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 pub struct Field {
     name: String,
@@ -39,7 +36,6 @@ pub struct Field {
 
 impl Field {
     fn new(t: &mut Tokenizer) -> Self {
-
         let type_ = t.expect(TokenType::IDENTIFIER).to_string();
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
@@ -84,9 +80,6 @@ impl Class {
     }
 }
 
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -102,7 +95,7 @@ mod tests {
             .to_string(),
             parse_index: 0,
         };
-    
+
         if t.expect(TokenType::KEYWORD) == "class" {
             let _class = Class::new(&mut t);
             _class.display();
@@ -120,5 +113,3 @@ mod tests {
         }
     }
 }
-
-

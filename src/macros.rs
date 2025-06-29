@@ -1,4 +1,3 @@
-
 #[macro_export]
 #[macro_use]
 macro_rules! comp {
@@ -67,7 +66,6 @@ macro_rules! dbg {
     }};
 }
 
-
 macro_rules! map {
     {$key:ident, $value:expr; for $x:ident in $to_iterate_over:expr} => {
         {
@@ -77,20 +75,17 @@ macro_rules! map {
             }
             res
         }
-        
+
     };
 }
 
-
 macro_rules! time_it {
-    ($label:expr, $code:block) => {
-        {
-            let start = std::time::Instant::now();
-            let result = $code;
-            println!("{} took: {:?}", $label, start.elapsed());
-            result
-        }
-    };
+    ($label:expr, $code:block) => {{
+        let start = std::time::Instant::now();
+        let result = $code;
+        println!("{} took: {:?}", $label, start.elapsed());
+        result
+    }};
 }
 
 macro_rules! pipe {
@@ -101,4 +96,3 @@ macro_rules! pipe {
         pipe!($func($value) => $($rest)*)
     };
 }
-

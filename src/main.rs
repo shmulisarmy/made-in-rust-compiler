@@ -2,17 +2,17 @@ mod If_parser;
 mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
-mod type_parser;
-mod precedence_order;
-mod expression;
 mod constants;
+mod expression;
+mod function_parser;
+mod linkedList;
 mod macros;
+mod mapTrie;
+mod precedence_order;
 mod token;
 mod tokenizer;
 mod trie;
-mod mapTrie;
-mod linkedList;
-mod function_parser;
+mod type_parser;
 
 use token::*;
 use tokenizer::*;
@@ -20,8 +20,8 @@ use tokenizer::*;
 use expression::*;
 use function_parser::*;
 
-use crate::while_parser::While;
 use crate::If_parser::If;
+use crate::while_parser::While;
 // enum SyntaxNode{
 //     Class(Class),
 //     Function(Function),
@@ -34,36 +34,13 @@ use crate::If_parser::If;
 //     // NumberLiteral(Literal),
 // }
 
-
-
-
-
-
-
-
-
-
-
 use crate::expression::Expression;
 mod class_parser;
 use class_parser::Class;
 
+static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| Mutex::new(Vec::new()));
 
-
-
-
-
-
-static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| {
-    Mutex::new(Vec::new())
-});
-
-
-static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| {
-    Mutex::new(Vec::new())
-});
-
-
+static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| Mutex::new(Vec::new()));
 
 fn main() {
     color_backtrace::install();
@@ -77,8 +54,8 @@ fn main() {
         }
 
         function sub(int a = 9, int b = 2) Person<int> {
-            let int a
-            let int b
+            let [][]int operation_map
+            let function<(int, char), void> callback
         }
 
 
@@ -98,28 +75,24 @@ fn main() {
     };
     // function add(int a = 9, int b = sub(3*7))
 
-
     while t.in_range() {
-        
         match t.expect(TokenType::KEYWORD) {
             "class" => {
-                
                 let _class = Class::new(&mut t);
                 _class.display();
-
-            },
+            }
             "function" => {
                 let _function = Function::new(&mut t);
                 _function.display();
-            },
+            }
             "while" => {
                 let _while = While::new(&mut t);
                 _while.display();
-            },
+            }
             "if" => {
                 let _if = If::new(&mut t);
                 _if.display();
-            },
+            }
             _ => {
                 t.expect_char('\n');
             }
@@ -129,7 +102,6 @@ fn main() {
 
     // expression::Expression::new(&mut t, ',', '\n');
 }
-
 
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
@@ -152,15 +124,3 @@ macro_rules! comp {
     };
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

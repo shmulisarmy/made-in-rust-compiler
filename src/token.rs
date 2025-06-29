@@ -1,4 +1,3 @@
-
 use core::str;
 
 type Int = usize;
@@ -15,7 +14,6 @@ pub enum TokenType {
     // DELIMITER,
     EOF,
 }
-
 
 #[derive(Debug, Clone)]
 pub struct Token {
