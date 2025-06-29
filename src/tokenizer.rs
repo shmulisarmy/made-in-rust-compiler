@@ -25,6 +25,8 @@ impl Tokenizer {
         while self.in_range() && self.current_char().is_ascii_whitespace() {
             peek_index += 1;
         }
+        dbg!(peek_index);
+        dbg!(self.parse_index);
         return peek_index == self.code.len();
     }
 
@@ -86,6 +88,7 @@ impl Tokenizer {
     }
 
     pub fn next(&mut self) -> Token {
+        self.eat_all_spaces();
         if !self.in_range() {return Token{type_:TokenType::EOF, value: "".to_string(), start_index:self.parse_index};}
         if self.current_char().is_numeric() {return Token{type_:TokenType::NUMBER, value: self.expect(TokenType::NUMBER), start_index:self.parse_index};}
         if self.current_char().is_alphabetic() {return Token{type_:TokenType::IDENTIFIER, value: self.expect(TokenType::IDENTIFIER), start_index:self.parse_index};}

@@ -1,3 +1,4 @@
+use crate::expression::Expression;
 use crate::linkedList::*;
 
 
@@ -5,76 +6,74 @@ use crate::linkedList::*;
 #[cfg(test)]
 mod tests {
     use super::*;
-    #[test]
-    fn test_precedence() {
+    // #[test]
 
-        let mut ll: LinkedList<String> = LinkedList::new();
-        for item in vec!["a", "=", "b", "+", "c", "*", "9"] {
-            ll.append(item.to_string());
-        }
-
-        let operands = ['+', '-', '*', '/', '%', '=', '!', '&', '|'];
-
-        let mut current = ll.head;
-        while let Some(node_index) = current {
-            // let node = &ll.storage[node_index];
-
-            if operands.contains(&ll.storage[node_index].value.chars().next().unwrap()) {
-                absorb_neighbors(&mut ll, node_index);
-            }
-            // println!("Node: {}, value: {}", node_index, node.value);
-            current = ll.storage[node_index].next;
-        }
-
-
-        ll.display();
-    }
 
 }
 
-static OPERANDS: &[char] = &['+', '-', '*', '/', '%', '=', '!', '&', '|'];
+static OPERAND_CHARS: &[char] = &['+', '-', '*', '/', '%', '=', '!', '&', '|', '(', ')'];
 
 use std::sync::LazyLock;
-static OPERATOR_PRECEDENCE: LazyLock<std::collections::HashMap<char, u8>> = LazyLock::new(|| {
+static OPERATOR_PRECEDENCE: LazyLock<std::collections::HashMap<String, u8>> = LazyLock::new(|| {
     let mut map = std::collections::HashMap::new();
-    map.insert('*', 3);
-    map.insert('/', 3);
-    map.insert('%', 3);
-    map.insert('+', 2);
-    map.insert('-', 2);
-    map.insert('=', 1);
-    map.insert('!', 1);
-    map.insert('&', 1);
-    map.insert('|', 1);
+    map.insert("*".to_string(), 3);
+    map.insert("/".to_string(), 3);
+    map.insert("%".to_string(), 3);
+    map.insert("+".to_string(), 2);
+    map.insert("-".to_string(), 2);
+    map.insert("=".to_string(), 1);
+    map.insert("!".to_string(), 1);
+    map.insert("&".to_string(), 1);
+    map.insert("-=".to_string(), 1);
+    map.insert("+=".to_string(), 1);
+    map.insert("*=".to_string(), 1);
+    map.insert("/=".to_string(), 1);
+    map.insert("%=".to_string(), 1);
     map
 });
 
 
+use std::fmt::Display;
 
 
-fn two_down_is_greater(ll: &mut LinkedList<String>, node_index: NodeIndex)->bool {
+use crate::expression::ExpressionPiece;
+use crate::expression::FunctionCall;
+use crate::expression::OperatorToString;
+
+
+fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex)->bool {
     let double_next = ll.get_two_down(node_index);
     if double_next.is_none() {
         return false;
     }
-    let two_down_is_not_operand = !OPERANDS.contains(&ll.storage[node_index].value.chars().next().unwrap());
-    if two_down_is_not_operand {
-        return false;
+    if let ExpressionPiece::Operator(two_down_op) = &ll.storage[double_next.unwrap()].value {
+        if let ExpressionPiece::Operator(this_op) = &ll.storage[node_index].value {
+            let double_next_precedence = OPERATOR_PRECEDENCE.get(two_down_op).unwrap();
+            let this_onces_precedence = OPERATOR_PRECEDENCE.get(this_op).unwrap();
+            return this_onces_precedence < double_next_precedence;
+        }
     }
-    let this_onces_precedence = OPERATOR_PRECEDENCE.get(&ll.storage[node_index].value.chars().next().unwrap()).unwrap();
-    let double_next_precedence = OPERATOR_PRECEDENCE.get(&ll.storage[double_next.unwrap()].value.chars().next().unwrap()).unwrap();
-    this_onces_precedence < double_next_precedence 
+    false
+    
+    
 }
 
 
-fn absorb_neighbors(ll: &mut LinkedList<String>, node_index: NodeIndex) {
+pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) {
     while two_down_is_greater(ll, node_index) {
         absorb_neighbors(ll, ll.get_two_down(node_index).unwrap());
     }
 
     let prev = ll.storage[node_index].prev;
     let next = ll.storage[node_index].next;
-    ll.storage[node_index].value = format!("({} {} {})", &ll.storage[prev.unwrap()].value, &ll.storage[node_index].value, &ll.storage[next.unwrap()].value);
+    ll.storage[node_index].value = ExpressionPiece::FunctionCall(
+        FunctionCall{name: OperatorToString(&ll.storage[node_index].value),
+        params: vec![ 
+            Expression(ll.storage[prev.unwrap()].value.clone()), 
+            Expression(ll.storage[next.unwrap()].value.clone())
+        ]
+    }
+    );
     ll.remove(prev.unwrap());
     ll.remove(next.unwrap());
 }

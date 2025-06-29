@@ -80,3 +80,25 @@ macro_rules! map {
         
     };
 }
+
+
+macro_rules! time_it {
+    ($label:expr, $code:block) => {
+        {
+            let start = std::time::Instant::now();
+            let result = $code;
+            println!("{} took: {:?}", $label, start.elapsed());
+            result
+        }
+    };
+}
+
+macro_rules! pipe {
+    ($value:expr => $func:ident) => {
+        $func($value)
+    };
+    ($value:expr => $func:ident => $($rest:tt)*) => {
+        pipe!($func($value) => $($rest)*)
+    };
+}
+

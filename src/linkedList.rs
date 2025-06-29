@@ -16,7 +16,7 @@ pub struct LinkedList<T> {
     pub tail: Option<NodeIndex>,
 }
 
-impl<T: Clone+Display> LinkedList<T> {
+impl<T> LinkedList<T> {
     pub fn new() -> Self {
         Self { 
             storage: Vec::new(), 
@@ -128,13 +128,13 @@ impl<T: Clone+Display> LinkedList<T> {
             current: self.head,
         }
     }
-    pub fn display(&self) {
-        let mut current = self.head;
-        while let Some(node_index) = current {
-            println!("{}", self.storage[node_index].value);
-            current = self.storage[node_index].next;
-        }
-    }
+    // pub fn display(&self) {
+    //     let mut current = self.head;
+    //     while let Some(node_index) = current {
+    //         println!("{}", self.storage[node_index].value);
+    //         current = self.storage[node_index].next;
+    //     }
+    // }
 }
 
 struct LinkedListIterator<'a, T> {

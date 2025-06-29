@@ -85,15 +85,23 @@ fn main() {
     color_backtrace::install();
 
     let mut t = Tokenizer {
-        code: "a = b + c * add(9, 3, proceed(2, 9+0))
-
-        a = b + c * add(9, 300)
+        code: "
+        class Person{
+            int age = a = b + c * add(9, 3*7)
+            string name
+            string email
+        }
         "
         .to_string(),
         parse_index: 0,
     };
 
-    expression::Expression::new(&mut t, ',', '\n');
+    if t.expect(TokenType::KEYWORD) == "class" {
+        let _class = Class::new(&mut t);
+        _class.display();
+    }
+
+    // expression::Expression::new(&mut t, ',', '\n');
 }
 
 
@@ -107,6 +115,16 @@ macro_rules! comp {
             res
         }
     };
+    [$value:expr; until $cond:expr] => {
+        {
+            let mut res = Vec::new();
+            while !$cond {
+                res.push($value);
+            }
+            res
+        }
+    };
+
 }
 
 
