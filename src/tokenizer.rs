@@ -1,19 +1,24 @@
+use core::panic;
+use std::process;
 use std::sync::LazyLock;
 use std::sync::Mutex;
 
 use crate::constants::*;
 use crate::token::*;
+use crate::utils::blue;
+use crate::utils::red;
 
 type Int = usize;
 
 pub struct Tokenizer {
+    pub start_line: Int,
     pub code: String,
     pub parse_index: Int,
 }
 
 impl Tokenizer {
-    pub fn new(code: String, parse_index: Int) -> Self {
-        Self { code, parse_index }
+    pub fn new(code: String, parse_index: Int, start_line: Int) -> Self {
+        Self {start_line, code, parse_index }
     }
 
     pub fn in_range(&self) -> bool {
@@ -75,10 +80,37 @@ impl Tokenizer {
     pub fn expect_char(&mut self, letter: char) {
         self.eat_all_spaces();
         dbg!(self.current_char());
-        self.display_and_highlight_current_token(self.parse_index, self.parse_index + 1);
-        assert!(self.in_range() && self.current_char() == letter);
+        if !self.in_range() {
+            panic!("your at the end of the file in a position where you still need to parse");
+        }
+        if self.current_char() != letter{
+            panic!("expected {} but got {}", letter, self.current_char());
+        }
         self.parse_index += 1;
     }
+
+    pub fn expect_char_with_backups(&mut self, letter: char, backups: &[char; 1]) {
+        //the assumption is that letter is the one that will get eaten and if so the tokenizer will consume that char, if not it will look at the backups first but not step forward
+        self.eat_all_spaces();
+        dbg!(self.current_char());
+        if !self.in_range() {
+            panic!("your at the end of the file in a position where you still need to parse");
+        }
+        if self.current_char() == letter{
+            self.parse_index += 1;
+            return;
+        }
+        for backup in backups {
+            if self.current_char() == *backup {
+                return;
+            }
+        }
+        self.user_error(self.parse_index, self.parse_index + 1);
+        let formated_backups = backups.iter().map(|c| format!("{}", c)).collect::<Vec<String>>().join(", ");
+        panic!("expected {} or any of the following: {} but got {}", letter, formated_backups, self.current_char());
+    }
+
+    
 
     pub fn optionaly_expect_char(&mut self, letter: char) -> bool {
         self.eat_spaces();
@@ -91,11 +123,12 @@ impl Tokenizer {
 
     pub fn next(&mut self) -> Token {
         self.eat_all_spaces();
+        let token_start = self.parse_index;
         if !self.in_range() {
             return Token {
                 type_: TokenType::EOF,
                 value: "".to_string(),
-                start_index: self.parse_index,
+                start_index: token_start,
             };
         }
 
@@ -103,14 +136,14 @@ impl Tokenizer {
             return Token {
                 type_: TokenType::NUMBER,
                 value: self.expect(TokenType::NUMBER).to_string(),
-                start_index: self.parse_index,
+                start_index: token_start,
             };
         }
         if self.current_char().is_alphabetic() {
             return Token {
                 type_: TokenType::IDENTIFIER,
                 value: self.expect(TokenType::IDENTIFIER).to_string(),
-                start_index: self.parse_index,
+                start_index: token_start,
             };
         }
         if self.current_char().is_ascii_whitespace() {
@@ -180,6 +213,11 @@ impl Tokenizer {
         }
         dbg!(&type_);
         self.eat_all_spaces();
+        if self.current_char() == ';'{
+            self.user_error(self.parse_index, self.parse_index + 1);
+            println!("{}", red("in this language why dont use semicolons (this is a modern language)".to_string()));
+            panic!("stack trace view");
+        }
         let start = self.parse_index;
         match type_ {
             TokenType::NUMBER => {
@@ -190,6 +228,14 @@ impl Tokenizer {
             TokenType::IDENTIFIER => {
                 while self.in_range() && (self.current_char().is_alphanumeric() || self.current_char() == '_') {
                     self.parse_index += 1;
+                }
+                dbg!(start);
+                dbg!(self.parse_index);
+                dbg!(&self.code[start..self.parse_index]);
+                if start == self.parse_index {
+                    let next_token = &self.next();
+                    self.user_error(next_token.start_index, next_token.start_index+next_token.value.len());
+                    println!("dont see a valid identifier");
                 }
             }
             TokenType::STRING => {
@@ -231,12 +277,44 @@ impl Tokenizer {
         }
         return &self.code[start..self.parse_index];
     }
-    pub fn display_and_highlight_current_token(&self, start_index: Int, end_index: Int) {
+
+
+
+
+
+    //ui methods
+    pub fn user_error(&self, start_index: Int, end_index: Int) {
         println!(
-            "{}---{}---{}",
-            &self.code[0..start_index],
+            "{}\x1b[31;4m{}\x1b[0m{}",
+            &self.code[..start_index],
             &self.code[start_index..end_index],
-            &self.code[end_index..self.code.len()]
+            &self.code[end_index..]
         );
+        let (line, column) = self.find_line_and_column(end_index);
+        let error_location_link = format!("src/main.rs:{}:{}", self.start_line + line, column);
+        println!("{} {}", red("error".to_string()), blue(error_location_link));
+        process::exit(1); // 1 means error; 0 means success
+              
+    }
+
+    //ui methods
+    pub fn find_line_and_column(&self, start_index: Int) -> (Int, Int) {
+        let mut line = 1;
+        let mut column = 1;
+        for i in 0..start_index {
+            if self.code.chars().nth(i) == Some('\n') {
+                line += 1;
+                column = 1;
+            } else {
+                column += 1;
+            }
+        }   
+        return (line, column);     
     }
 }
+
+
+
+
+
+

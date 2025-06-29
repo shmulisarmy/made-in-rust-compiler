@@ -4,6 +4,7 @@ use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
 use crate::token::TokenType;
 use crate::tokenizer::Tokenizer;
+use crate::utils::red;
 
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
@@ -64,6 +65,7 @@ pub struct Class {
 
 impl Class {
     pub fn new(t: &mut Tokenizer) -> Self {
+        Self::preview_scan(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('{');
         t.eat_all_spaces();
@@ -77,6 +79,15 @@ impl Class {
             println!("    {} {}", field.type_, field.name);
         }
         println!("}}");
+    }
+
+    fn preview_scan(t: &mut Tokenizer) {
+        use crate::previewScannerUtils::*;
+        if !looks_like_identifier(t) {
+            let next_token = t.next();
+            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            panic!("{}", red("expected identifier (class name)".to_string()));
+        }
     }
 }
 

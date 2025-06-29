@@ -1,3 +1,5 @@
+mod previewScannerUtils;
+mod utils;
 mod If_parser;
 mod while_parser;
 use std::sync::{LazyLock, Mutex};
@@ -44,8 +46,8 @@ static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| Mutex::new(V
 
 fn main() {
     color_backtrace::install();
-
     let mut t = Tokenizer {
+        start_line: line!() as usize,
         code: "
         class Person{
             int age = b + c * add(3*7)
@@ -53,9 +55,9 @@ fn main() {
             string email = \"hello world\"
         }
 
-        function sub(int a = 9, int b = 2) Person<int?> {
-            let [][string]int? operation_map
-            let function<(int, char), void>? callback
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let function<(int, char), void>? callback = 0
         }
 
 
@@ -64,7 +66,7 @@ fn main() {
             b = 2
         }
 
-        if a + b{
+        if a+b{
             a  = 9
             b = 2
         }

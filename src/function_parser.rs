@@ -2,6 +2,7 @@ use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
 use crate::token::TokenType;
 use crate::tokenizer::Tokenizer;
+use crate::utils::red;
 use std::fmt::Display;
 use crate::type_parser::Type_;
 macro_rules! comp {
@@ -46,9 +47,7 @@ impl Param {
                 default_value,
             };
         } else {
-            if t.current_char() != ')' {
-                t.expect_char(',');
-            }
+            t.expect_char_with_backups( ',',  &[')']);
             t.eat_all_spaces();
             return Self {
                 name,
@@ -69,6 +68,7 @@ pub struct Var {
 
 impl Var {
     fn new(t: &mut Tokenizer) -> Self {
+        Self::preview_scan(t);
         let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
@@ -89,6 +89,14 @@ impl Var {
                 type_,
                 default_value: Expression(ExpressionPiece::Placeholder(false)),
             };
+        }
+    }
+    fn preview_scan(t: &mut Tokenizer) {
+        use crate::previewScannerUtils::*;
+        if !looks_like_type(t) {
+            let next_token = t.next();
+            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            panic!("{}", red("expected type".to_string()));
         }
     }
     fn display(&self) {
@@ -117,6 +125,7 @@ pub struct Function {
 
 impl Function {
     pub fn new(t: &mut Tokenizer) -> Self {
+        Self::preview_scan(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('(');
         let params = comp![Param::new(t); until t.optionaly_expect_char(')')];
@@ -129,6 +138,14 @@ impl Function {
         };
         res.parse_body(t);
         res
+    }
+    fn preview_scan(t: &mut Tokenizer) {
+        use crate::previewScannerUtils::*;
+        if !looks_like_identifier(t) {
+            let next_token = t.next();
+            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            panic!("{}", red("expected identifier (function name)".to_string()));
+        }
     }
     pub fn display(&self) {
         println!("Function {} (", self.name);
