@@ -85,7 +85,10 @@ impl Class {
         use crate::previewScannerUtils::*;
         if !looks_like_identifier(t) {
             let next_token = t.next();
-            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            t.user_error(
+                next_token.start_index,
+                next_token.start_index + next_token.value.len(),
+            );
             panic!("{}", red("expected identifier (class name)".to_string()));
         }
     }
@@ -98,6 +101,8 @@ mod tests {
     #[test]
     fn test_class_parser() {
         let mut t = Tokenizer {
+            file_name: file!(),
+            start_line: line!() as usize,
             code: "class Person{
             int age
             string name

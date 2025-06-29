@@ -10,16 +10,14 @@ use crate::utils::red;
 
 type Int = usize;
 
-pub struct Tokenizer {
+pub struct Tokenizer<'a> {
+    pub file_name: &'a str,
     pub start_line: Int,
     pub code: String,
     pub parse_index: Int,
 }
 
-impl Tokenizer {
-    pub fn new(code: String, parse_index: Int, start_line: Int) -> Self {
-        Self {start_line, code, parse_index }
-    }
+impl<'a> Tokenizer<'a> {
 
     pub fn in_range(&self) -> bool {
         return self.parse_index < self.code.len();
@@ -291,7 +289,7 @@ impl Tokenizer {
             &self.code[end_index..]
         );
         let (line, column) = self.find_line_and_column(end_index);
-        let error_location_link = format!("src/main.rs:{}:{}", self.start_line + line, column);
+        let error_location_link = format!("{}:{}:{}", self.file_name, self.start_line + line, column);
         println!("{} {}", red("error".to_string()), blue(error_location_link));
         process::exit(1); // 1 means error; 0 means success
               

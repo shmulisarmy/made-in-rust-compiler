@@ -32,11 +32,11 @@ pub struct If {
 
 impl If {
     pub fn new(t: &mut Tokenizer) -> Self {
-        let condition = if t.optionaly_expect_char('('){
+        let condition = if t.optionaly_expect_char('(') {
             let res = Expression::new(t, ',', ')');
             t.expect_char(')');
             res
-        }   else {
+        } else {
             Expression::new(t, '\n', '{')
         };
 
@@ -64,7 +64,9 @@ mod tests {
     #[test]
     fn test_parse_without_panic() {
         let mut t = Tokenizer {
-            code: "    
+            file_name: file!(),
+            start_line: line!() as usize,
+            code: "
             if (a + b){
                 a  = 9
                 b = 2

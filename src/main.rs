@@ -1,6 +1,6 @@
+mod If_parser;
 mod previewScannerUtils;
 mod utils;
-mod If_parser;
 mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
@@ -47,6 +47,7 @@ static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| Mutex::new(V
 fn main() {
     color_backtrace::install();
     let mut t = Tokenizer {
+        file_name: file!(),
         start_line: line!() as usize,
         code: "
         class Person{

@@ -57,7 +57,7 @@ impl Type_ {
         }
 
         if t.optionaly_expect_char('(') {
-            let mut res=  Self {
+            let mut res = Self {
                 name: "tuple".to_string(),
                 sub_types: vec![],
                 is_optional: false,
@@ -69,7 +69,7 @@ impl Type_ {
             if t.optionaly_expect_char('?') {
                 res.is_optional = true;
             }
-            return  res;
+            return res;
         }
 
         let mut res = Self {
@@ -125,7 +125,9 @@ mod tests {
     #[test]
     fn basic_test() {
         let mut t = Tokenizer {
-            code: "    
+            file_name: file!(),
+            start_line: line!() as usize,
+            code: "
             Person<(int), [int]string<char>, []int>
             "
             .to_string(),
@@ -147,6 +149,5 @@ mod tests {
 
         assert_eq!(_type.sub_types[2].name, "array");
         assert_eq!(_type.sub_types[2].sub_types[0].name, "int");
-
     }
 }

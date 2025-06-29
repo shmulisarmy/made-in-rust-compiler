@@ -1,10 +1,11 @@
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
+use crate::previewScannerUtils::looks_like_type;
 use crate::token::TokenType;
 use crate::tokenizer::Tokenizer;
+use crate::type_parser::Type_;
 use crate::utils::red;
 use std::fmt::Display;
-use crate::type_parser::Type_;
 macro_rules! comp {
     [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
         {
@@ -47,7 +48,7 @@ impl Param {
                 default_value,
             };
         } else {
-            t.expect_char_with_backups( ',',  &[')']);
+            t.expect_char_with_backups(',', &[')']);
             t.eat_all_spaces();
             return Self {
                 name,
@@ -95,7 +96,10 @@ impl Var {
         use crate::previewScannerUtils::*;
         if !looks_like_type(t) {
             let next_token = t.next();
-            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            t.user_error(
+                next_token.start_index,
+                next_token.start_index + next_token.value.len(),
+            );
             panic!("{}", red("expected type".to_string()));
         }
     }
@@ -103,8 +107,6 @@ impl Var {
         println!("Var {} {}", self.type_.to_string(), self.name);
     }
 }
-
-
 
 use crate::expression::FunctionCall;
 use crate::until;
@@ -114,7 +116,6 @@ pub enum ValidInFunctionBody {
     Var(Var),
 }
 // we'e soon move this to its own file
-
 
 pub struct Function {
     pub name: String,
@@ -129,7 +130,17 @@ impl Function {
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('(');
         let params = comp![Param::new(t); until t.optionaly_expect_char(')')];
-        let return_type = Type_::new(t);
+
+        let return_type = if looks_like_type(t) {
+            Type_::new(t)
+        } else {
+            Type_ {
+                name: "void".to_string(),
+                sub_types: Vec::new(),
+                is_optional: false,
+            }
+        };
+
         let mut res = Self {
             name,
             params,
@@ -143,7 +154,10 @@ impl Function {
         use crate::previewScannerUtils::*;
         if !looks_like_identifier(t) {
             let next_token = t.next();
-            t.user_error(next_token.start_index, next_token.start_index + next_token.value.len());
+            t.user_error(
+                next_token.start_index,
+                next_token.start_index + next_token.value.len(),
+            );
             panic!("{}", red("expected identifier (function name)".to_string()));
         }
     }
@@ -207,10 +221,12 @@ mod tests {
     #[test]
     fn test_function_parser() {
         let mut t = Tokenizer {
+            file_name: file!(),
+            start_line: line!() as usize,
             code: "function sub(int a, int b){}
-    
-    
-    
+
+
+
             "
             .to_string(),
             parse_index: 0,
@@ -233,10 +249,12 @@ mod tests {
     #[test]
     fn test_function_parser_that_having_default_values_dont_break_it() {
         let mut t = Tokenizer {
+            file_name: file!(),
+            start_line: line!() as usize,
             code: "function sub(int a = 9, int b = 2 + 3){}
-    
-    
-    
+
+
+
             "
             .to_string(),
             parse_index: 0,
@@ -258,14 +276,16 @@ mod tests {
     #[test]
     fn test_that_parsing_function_body_doesnt_panic() {
         let mut t = Tokenizer {
+            file_name: file!(),
+            start_line: line!() as usize,
             code: "function sub(int a = 9, int b = 2 + 3){
-                const a = 9
-                let b = 2
+                const int a = 9
+                let int b = 2
                 a = b+9
             }
-    
-    
-    
+
+
+
             "
             .to_string(),
             parse_index: 0,
@@ -287,10 +307,12 @@ mod tests {
     #[test]
     fn post_type_system_upgrade_var_test() {
         let mut t = Tokenizer {
+            file_name: file!(),
+            start_line: line!() as usize,
             code: "
-                const []int  a = 9          
-    
-    
+                const []int  a = 9
+
+
             "
             .to_string(),
             parse_index: 0,
@@ -300,7 +322,5 @@ mod tests {
         let var = Var::new(&mut t);
         var.display();
         assert_eq!(var.name, "a");
+    }
 }
-}
-
-

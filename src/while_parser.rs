@@ -60,7 +60,9 @@ mod tests {
     #[test]
     fn test_parse_without_panic() {
         let mut t = Tokenizer {
-            code: "    
+            file_name: file!(),
+            start_line: line!() as usize,
+            code: "
             while (a + b){
                 a  = 9
                 b = 2
