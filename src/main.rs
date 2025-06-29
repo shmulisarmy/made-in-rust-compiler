@@ -49,8 +49,8 @@ fn main() {
         code: "
         class Person{
             int age = b + c * add(3*7)
-            string name
-            string email
+            string name = 'John Doe'
+            string email = \"hello world\"
         }
 
         function sub(int a = 9, int b = 2) Person<int> {

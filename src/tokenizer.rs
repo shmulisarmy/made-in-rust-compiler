@@ -98,6 +98,7 @@ impl Tokenizer {
                 start_index: self.parse_index,
             };
         }
+
         if self.current_char().is_numeric() {
             return Token {
                 type_: TokenType::NUMBER,
@@ -123,13 +124,50 @@ impl Tokenizer {
                 start_index: self.parse_index,
             };
         }
+
+        //its important that this run before the .is_ascii_punctuation check bc quotes are considered punctuation and will therefore be caught by the .is_ascii_punctuation check and it will parse it incorrectly
+        if self.current_char() == '\'' {
+            self.parse_index += 1;
+            let start_index = self.parse_index;
+            while self.in_range() && self.current_char() != '\'' {
+                self.parse_index += 1;
+            }
+            let token =  Token {
+                type_: TokenType::STRING,
+                value: self.code[start_index..self.parse_index].to_string(),
+                start_index: self.parse_index,
+            };
+            self.parse_index += 1; // skip the closing quote, (if not the next thing that tries to parse will end up thinking that the rest of the file is part of that string)
+            return token;
+        }
+
+         //its important that this run before the .is_ascii_punctuation check bc quotes are considered punctuation and will therefore be caught by the .is_ascii_punctuation check and it will parse it incorrectly
+         if self.current_char() == '"' {
+            self.parse_index += 1;
+            let start_index = self.parse_index;
+            while self.in_range() && self.current_char() != '"' {
+                self.parse_index += 1;
+            }
+            let token =  Token {
+                type_: TokenType::STRING,
+                value: self.code[start_index..self.parse_index].to_string(),
+                start_index: self.parse_index,
+            };
+            self.parse_index += 1; // skip the closing quote, (if not the next thing that tries to parse will end up thinking that the rest of the file is part of that string)
+            return token;
+        }
         if self.current_char().is_ascii_punctuation() {
+            assert_ne!(self.current_char(), '\'', "quotes should be handled above");
+            assert_ne!(self.current_char(), '"', "quotes should be handled above");
             return Token {
                 type_: TokenType::PUNCTUATION,
                 value: self.expect(TokenType::PUNCTUATION).to_string(),
                 start_index: self.parse_index,
             };
         }
+
+        
+        
         panic!("not implemented");
     }
     pub fn expect(&mut self, type_: TokenType) -> &str {
