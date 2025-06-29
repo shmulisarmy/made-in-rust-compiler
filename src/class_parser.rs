@@ -40,8 +40,8 @@ pub struct Field {
 impl Field {
     fn new(t: &mut Tokenizer) -> Self {
 
-        let type_ = t.expect(TokenType::IDENTIFIER);
-        let name = t.expect(TokenType::IDENTIFIER);
+        let type_ = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, '\n', '\n');
             t.eat_all_spaces();
@@ -68,7 +68,7 @@ pub struct Class {
 
 impl Class {
     pub fn new(t: &mut Tokenizer) -> Self {
-        let name = t.expect(TokenType::IDENTIFIER);
+        let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('{');
         t.eat_all_spaces();
         let fields = comp![Field::new(t); until t.optionaly_expect_char('}')];

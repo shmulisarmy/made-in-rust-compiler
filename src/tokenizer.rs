@@ -90,18 +90,24 @@ impl Tokenizer {
     pub fn next(&mut self) -> Token {
         self.eat_all_spaces();
         if !self.in_range() {return Token{type_:TokenType::EOF, value: "".to_string(), start_index:self.parse_index};}
-        if self.current_char().is_numeric() {return Token{type_:TokenType::NUMBER, value: self.expect(TokenType::NUMBER), start_index:self.parse_index};}
-        if self.current_char().is_alphabetic() {return Token{type_:TokenType::IDENTIFIER, value: self.expect(TokenType::IDENTIFIER), start_index:self.parse_index};}
+        if self.current_char().is_numeric() {return Token{type_:TokenType::NUMBER, value: self.expect(TokenType::NUMBER).to_string(), start_index:self.parse_index};}
+        if self.current_char().is_alphabetic() {return Token{type_:TokenType::IDENTIFIER, value: self.expect(TokenType::IDENTIFIER).to_string(), start_index:self.parse_index};}
         if self.current_char().is_ascii_whitespace() {self.eat_spaces(); return self.next();}
         if OPERATORS_TRIE.contains_letter(self.current_char()) {return Token{
-            type_:TokenType::OPERATOR, value: self.expect(TokenType::OPERATOR), start_index:self.parse_index
+            type_:TokenType::OPERATOR, value: self.expect(TokenType::OPERATOR).to_string(), start_index:self.parse_index
         };}
-        if self.current_char().is_ascii_punctuation() {return Token{type_:TokenType::PUNCTUATION, value: self.expect(TokenType::PUNCTUATION), start_index:self.parse_index};}
+        if self.current_char().is_ascii_punctuation() {return Token{type_:TokenType::PUNCTUATION, value: self.expect(TokenType::PUNCTUATION).to_string(), start_index:self.parse_index};}
         panic!("not implemented");
         
     }
-        pub fn expect(&mut self, type_: TokenType) -> String {
+        pub fn expect(&mut self, type_: TokenType) -> &str {
             println!("in expect ");
+            dbg!(&self.parse_index);
+            dbg!(&self.current_char());
+            if self.current_char() == ','{
+                dbg!(type_);
+                panic!("stack trace view");
+            }
             dbg!(&type_);
             self.eat_all_spaces();
             let start = self.parse_index;
@@ -153,6 +159,6 @@ impl Tokenizer {
                     assert!(self.parse_index == self.code.len());
                 }
             }
-            return self.code[start..self.parse_index].to_string();
+            return &self.code[start..self.parse_index];
     }
 }

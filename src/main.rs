@@ -10,11 +10,13 @@ mod tokenizer;
 mod trie;
 mod mapTrie;
 mod linkedList;
+mod function_parser;
 
 use token::*;
 use tokenizer::*;
 
 use expression::*;
+use function_parser::*;
 // enum SyntaxNode{
 //     Class(Class),
 //     Function(Function),
@@ -26,6 +28,9 @@ use expression::*;
 //     // StringLiteral(Literal),
 //     // NumberLiteral(Literal),
 // }
+
+
+
 
 
 
@@ -46,6 +51,11 @@ static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| {
 });
 
 
+static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| {
+    Mutex::new(Vec::new())
+});
+
+
 
 fn main() {
     color_backtrace::install();
@@ -58,9 +68,8 @@ fn main() {
             string email
         }
 
-        function add(int a, int b){
-            return a + b
-        }
+        function sub(int a = 9, int b = 2)
+        function add(int a = 9, int b = sub(3*7))
 
 
 
@@ -69,15 +78,26 @@ fn main() {
         parse_index: 0,
     };
 
-    if t.expect(TokenType::KEYWORD) == "class" {
-        let _class = Class::new(&mut t);
-        _class.display();
-    }
 
-    // if t.expect(TokenType::KEYWORD) == "function" {
-    //     let _class = Class::new(&mut t);
-    //     _class.display();
-    // }
+    while t.in_range() {
+        
+        match t.expect(TokenType::KEYWORD) {
+            "class" => {
+                
+                let _class = Class::new(&mut t);
+                _class.display();
+
+            },
+            "function" => {
+                let _function = Function::new(&mut t);
+                _function.display();
+            },
+            _ => {
+                t.expect_char('\n');
+            }
+        }
+        t.eat_all_spaces();
+    }
 
     // expression::Expression::new(&mut t, ',', '\n');
 }
