@@ -48,6 +48,7 @@ pub static KEYWORDS_TRIE: LazyLock<Trie> = LazyLock::new(|| {
         "box",
         "macro_rules",
         "class",
+        "function",
     ];
 
     for keyword in keywords {

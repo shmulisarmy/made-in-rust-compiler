@@ -69,8 +69,8 @@ pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIn
     ll.storage[node_index].value = ExpressionPiece::FunctionCall(
         FunctionCall{name: OperatorToString(&ll.storage[node_index].value),
         params: vec![ 
-            Expression(ll.storage[prev.unwrap()].value.clone()), 
-            Expression(ll.storage[next.unwrap()].value.clone())
+            Expression(ll.storage[prev.expect("there must be some kind of value/expression before an operator")].value.clone()), 
+            Expression(ll.storage[next.expect("there must be some kind of value/expression after an operator")].value.clone())
         ]
     }
     );

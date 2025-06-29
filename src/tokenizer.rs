@@ -140,7 +140,10 @@ impl Tokenizer {
                         self.parse_index += 1;
                     }
                     let word = &self.code[start..self.parse_index];
-                    assert!(KEYWORDS_TRIE.is_word(word));
+                    if !KEYWORDS_TRIE.is_word(word) {
+                        println!("{} is not a keyword", word);
+                        assert!(KEYWORDS_TRIE.is_word(word)); //inorder to panic with file:line
+                    }
                 } // TokenType::DELIMITER => {
                 //     while self.in_range() && self.current_char().is_alphanumeric() {
                 //         self.parse_index += 1;
