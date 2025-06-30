@@ -6,25 +6,9 @@ use crate::project_basic_utils::tokenizer::*;
 
 // Usage: time_it!("Database query", { expensive_operation() });
 
-macro_rules! comp {
-    [$value:expr; until $cond:expr] => {
-        {
-            let mut res = Vec::new();
-            while !$cond {
-                res.push($value);
-            }
-            res
-        }
-    };
-}
 
-macro_rules! until {
-    ($cond:expr, $block:block) => {
-        while !$cond {
-            $block
-        }
-    };
-}
+use crate::comp;
+use crate::until;
 
 // Define FunctionCall here since it's used in this module
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
@@ -68,8 +52,7 @@ impl Expression {
         let mut tokens = LinkedList::new();
 
         until!(
-            t.optionaly_expect_char(separator) || t.current_char() == scope_ender,
-            {
+            t.optionaly_expect_char(separator) || t.current_char() == scope_ender; {
                 tokens.append(parse_next_expression_piece(t));
             }
         );

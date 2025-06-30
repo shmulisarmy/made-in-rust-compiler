@@ -1,5 +1,5 @@
+// #[macro_use]
 #[macro_export]
-#[macro_use]
 macro_rules! comp {
     [value:expr; for x in expr] => {
         {

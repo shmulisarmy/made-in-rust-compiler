@@ -2,27 +2,9 @@ use crate::project_basic_utils::token::TokenType;
 use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::expression::Expression;
 
-macro_rules! comp {
-    [tuple_item_1:tt, tuple_item_2:tt; for x in expr] => {
-        {
-            let mut res = Vec::new();
-            for x in expr {
-                res.push((tuple_item_1, tuple_item_2));
-            }
-            res
-        }
-    };
-    [$value:expr; until $cond:expr] => {
-        {
-            let mut res = Vec::new();
-            while !$cond {
-                res.push($value);
-            }
-            res
-        }
-    };
 
-}
+use crate::comp;
+
 
 pub struct While {
     pub condition: Expression,
