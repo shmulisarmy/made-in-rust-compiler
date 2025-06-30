@@ -9,6 +9,7 @@ use crate::parser::var_parser::Var;
 use crate::parser::If_parser::If;
 use crate::parser::while_parser::While;
 use crate::project_basic_utils::token::TokenType;
+use crate::SyntaxNode;
 
 
 #[derive(Debug)]
@@ -24,7 +25,7 @@ pub enum ValidInCodeBlock{
 pub trait CodeBlock{
     fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock>;
     fn get_body(&self) -> & Vec<ValidInCodeBlock>;
-    fn parse_body(&mut self, t: &mut Tokenizer) {
+    fn parse_body(&mut self, t: &mut Tokenizer, parser_context: &mut Vec<SyntaxNode>) {
         t.expect_char('{');
         let parse_index_of_code_block = t.parse_index-1; // the minus one is because we ate up the char when we called expect_char
         t.eat_all_spaces();
@@ -58,15 +59,15 @@ pub trait CodeBlock{
                 }
                 "while" => {
                     assert_eq!(t.expect(TokenType::KEYWORD).to_string(), "while");
-                    let _while = While::new(t);
-                    _while.display();
-                    self.body_ptr().push(ValidInCodeBlock::While(_while));
+                    let while_val = While::new(t, parser_context);
+                    while_val.display();
+                    self.body_ptr().push(ValidInCodeBlock::While(while_val));
                 }
                 "if" => {
                     assert_eq!(t.expect(TokenType::KEYWORD).to_string(), "if");
-                    let _if = If::new( t);
-                    _if.display();
-                    self.body_ptr().push(ValidInCodeBlock::If(_if));
+                    let if_val = If::new(t, parser_context);
+                    if_val.display();
+                    self.body_ptr().push(ValidInCodeBlock::If(if_val));
                 }
                 "}" => {
                     panic!("didnt find token const or let");
@@ -82,8 +83,8 @@ pub trait CodeBlock{
                 }
                 _ => {
                     dbg!(t.peek_next_word());
-                    t.user_error(t.parse_index, t.parse_index + 1);
-                    println!("didnt find token const or let");
+                    // t.user_error(t.parse_index, t.parse_index + 1);
+                    // println!("didnt find token const or let");
                     let expression = Expression::new(t, '\n', '}');
                     self.body_ptr().push(ValidInCodeBlock::Expression(expression));
                 }

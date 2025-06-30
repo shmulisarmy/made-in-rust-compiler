@@ -5,6 +5,8 @@ use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::parser::expression::Expression;
 
 use crate::comp;
+use crate::SyntaxNode;
+use std::sync::Mutex;
 
 #[derive(Debug)]
 pub struct While {
@@ -13,16 +15,24 @@ pub struct While {
 }
 
 impl While {
-    pub fn new(t: &mut Tokenizer) -> Self {
+    /// Creates a new While node, pushes it to the parser context, parses the body, and pops it after parsing.
+    ///
+    /// # Context-walking logic (future):
+    /// To resolve a variable/type, iterate backwards through the context stack (Vec<SyntaxNode>),
+    /// checking each scope for the definition. The nearest enclosing scope wins. This enables
+    /// shadowing and proper scoping for variables/types.
+    pub fn new(t: &mut Tokenizer, parser_context: &mut Vec<SyntaxNode>) -> Self {
         t.expect_char('(');
         let condition = Expression::new(t, ',', ')');
         t.expect_char(')');
-
         t.eat_all_spaces();
-
-        let mut res = Self { condition, body: vec![] };
-        res.parse_body(t);
-        res
+        parser_context.push(SyntaxNode::While(While { condition, body: vec![] }));
+        let mut node = match parser_context.pop().unwrap() {
+            SyntaxNode::While(w) => w,
+            _ => unreachable!("Expected While node on context stack"),
+        };
+        node.parse_body(t, parser_context);
+        node
     }
     pub fn display(&self) {
         println!("displaying While statement");
@@ -33,7 +43,6 @@ impl While {
     }
 }
 
-
 impl CodeBlock for While{
     fn get_body(&self) -> & Vec<ValidInCodeBlock>{
         &self.body
@@ -41,9 +50,7 @@ impl CodeBlock for While{
 
     fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock> {
         &mut self.body
-
     }
-    
 }
 
 #[cfg(test)]
@@ -55,18 +62,12 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "
-            while (a + b){
-                a  = 9
-                b = 2
-            }
-            "
-            .to_string(),
+            code: "\nwhile (a + b){\n    a  = 9\n    b = 2\n}\n".to_string(),
             parse_index: 0,
         };
-
+        let mut context = vec![];
         assert_eq!(t.expect(TokenType::KEYWORD), "while");
-        let _while = While::new(&mut t);
+        let _while = While::new(&mut t, &mut context);
         assert_eq!(_while.body.len(), 2);
     }
 }
