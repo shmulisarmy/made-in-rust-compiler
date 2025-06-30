@@ -1,8 +1,8 @@
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
 use crate::previewScannerUtils::looks_like_type;
-use crate::token::TokenType;
-use crate::tokenizer::Tokenizer;
+use crate::project_basic_utils::token::*;
+use crate::project_basic_utils::tokenizer::*;
 use crate::type_parser::Type_;
 use crate::utils::red;
 use std::fmt::Display;

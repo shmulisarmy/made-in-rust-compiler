@@ -1,5 +1,5 @@
-use crate::token::TokenType;
-use crate::tokenizer::Tokenizer;
+use crate::project_basic_utils::tokenizer::*;
+
 
 use crate::expression::Expression;
 pub fn looks_like_type(t: &mut Tokenizer)->bool {

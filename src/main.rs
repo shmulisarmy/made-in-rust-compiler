@@ -7,17 +7,25 @@ use std::sync::{LazyLock, Mutex};
 mod constants;
 mod expression;
 mod function_parser;
-mod linkedList;
-mod macros;
-mod mapTrie;
 mod precedence_order;
-mod token;
-mod tokenizer;
-mod trie;
+mod project_basic_utils{
+    pub mod token;
+    pub mod tokenizer;
+
+}
+
+    mod libs{
+    pub mod trie;
+    pub mod mapTrie;
+    pub mod linkedList;
+    pub mod macros;
+}
+
+
 mod type_parser;
 
-use token::*;
-use tokenizer::*;
+use project_basic_utils::token::*;
+use project_basic_utils::tokenizer::*;
 
 use expression::*;
 use function_parser::*;
