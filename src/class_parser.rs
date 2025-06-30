@@ -2,8 +2,8 @@ use std::collections::HashMap;
 
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
-use crate::token::TokenType;
-use crate::tokenizer::Tokenizer;
+use crate::project_basic_utils::token::*;
+use crate::project_basic_utils::tokenizer::*;
 use crate::utils::red;
 
 macro_rules! comp {

@@ -8,11 +8,13 @@ mod constants;
 mod expression;
 mod function_parser;
 mod precedence_order;
-mod token;
-mod tokenizer;
+mod project_basic_utils{
+    pub mod token;
+    pub mod tokenizer;
 
+}
 
-mod libs{
+    mod libs{
     pub mod trie;
     pub mod mapTrie;
     pub mod linkedList;
@@ -22,8 +24,8 @@ mod libs{
 
 mod type_parser;
 
-use token::*;
-use tokenizer::*;
+use project_basic_utils::token::*;
+use project_basic_utils::tokenizer::*;
 
 use expression::*;
 use function_parser::*;
