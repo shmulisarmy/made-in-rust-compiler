@@ -34,7 +34,4 @@ This directory contains all modules related to parsing the language, including c
 - The context stack pattern makes it easy to add features like type checking, symbol resolution, and more.
 
 ## Design Notes
-- Each parser is responsible for its own scope management and context stack interaction.
-- The code is organized for clarity, modularity, and ease of extension.
-
---- 
+- Each parser is responsible for pushing and popping itself on and off the context stack
