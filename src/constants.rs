@@ -74,9 +74,7 @@ pub static OPERATORS_TRIE: LazyLock<MapTrie> = LazyLock::new(|| {
 pub static PUNCTUATION_TRIE: LazyLock<MapTrie> = LazyLock::new(|| {
     let mut trie = MapTrie::new();
     let punctuation = vec![
-        ",", ";", ":", "(", ")", "[", "]", "{", "}", "@", "#", "$", "\\", "`", "'", "\"", "!", "?",
-        ".", "-", "_", "=", "+", "*", "/", "%", "&", "|", "^", "~", "<", ">", "`", "´", "¨", "°",
-        "§", "©", "®", "™", "¢", "£", "¥", "€", "¤",
+        ",", ";", ":", "@", "#", "$", "`", "!"
     ];
 
     for punct in punctuation {

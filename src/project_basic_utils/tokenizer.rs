@@ -172,6 +172,15 @@ impl<'a> Tokenizer<'a> {
             self.parse_index += 1; // skip the closing quote, (if not the next thing that tries to parse will end up thinking that the rest of the file is part of that string)
             return token;
         }
+        if PUNCTUATION_TRIE.contains_letter(self.current_char()) {
+            // panic!("punctuation trie contains {}", self.current_char());
+            let token =  Token {
+                type_: TokenType::PUNCTUATION,
+                value: PUNCTUATION_TRIE.greety(self.expect(TokenType::PUNCTUATION)),
+                start_index: self.parse_index,
+            };
+            return token;
+        }
 
          //its important that this run before the .is_ascii_punctuation check bc quotes are considered punctuation and will therefore be caught by the .is_ascii_punctuation check and it will parse it incorrectly
          if self.current_char() == '"' {
@@ -206,15 +215,11 @@ impl<'a> Tokenizer<'a> {
         println!("in expect ");
         dbg!(&self.parse_index);
         dbg!(&self.current_char());
-        if self.current_char() == ',' {
-            dbg!(type_);
-            panic!("stack trace view");
-        }
         dbg!(&type_);
         self.eat_all_spaces();
         if self.current_char() == ';'{
             self.user_error(self.parse_index, self.parse_index + 1);
-            println!("{}", red("in this language why dont use semicolons (this is a modern language)".to_string()));
+            println!("{}", red("in this language we dont use semicolons (this is a modern language)".to_string()));
             panic!("stack trace view");
         }
         let start = self.parse_index;
@@ -246,6 +251,7 @@ impl<'a> Tokenizer<'a> {
                     peek_index += 1;
                 }
                 let longest = OPERATORS_TRIE.greety(&self.code[start..peek_index]);
+                println!("longest: {}", longest);
                 let len = longest.len();
                 self.parse_index += len;
             }
@@ -263,7 +269,11 @@ impl<'a> Tokenizer<'a> {
                 let word = &self.code[start..self.parse_index];
                 if !KEYWORDS_TRIE.is_word(word) {
                     println!("{} is not a keyword", word);
-                    assert!(KEYWORDS_TRIE.is_word(word)); //inorder to panic with file:line
+                    if !KEYWORDS_TRIE.is_word(word){
+                        self.user_error(start, self.parse_index);
+                        // Removed to fix mutable/immutable borrow issue
+                        panic!("expected a keyword but got {}", word);
+                    }
                 }
             } // TokenType::DELIMITER => {
             //     while self.in_range() && self.current_char().is_alphanumeric() {

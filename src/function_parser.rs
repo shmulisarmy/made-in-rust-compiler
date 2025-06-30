@@ -10,6 +10,7 @@ use crate::utils::red;
 use crate::while_parser::While;
 use crate::If_parser::If;
 use std::fmt::Display;
+use std::thread::panicking;
 
 use crate::comp;
 
@@ -22,6 +23,7 @@ pub struct Param {
 
 impl Param {
     fn new(t: &mut Tokenizer) -> Self {
+        Self::preview_scan(t);
         let type_ = t.expect(TokenType::IDENTIFIER).to_string();
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
@@ -41,6 +43,22 @@ impl Param {
                 default_value: Expression(ExpressionPiece::Placeholder(false)),
             };
         }
+    }
+    fn preview_scan(t: &mut Tokenizer) {
+        t.eat_spaces();
+        dbg!(t.current_char());
+        println!("proo");
+        if !looks_like_type(t) {
+            let next_token = t.next();
+            t.user_error(
+                next_token.start_index,
+                next_token.start_index + next_token.value.len()
+            );
+            panic!("{} {}", red("expected type found".to_string()), next_token.value);
+        } else {
+            println!("yes");
+        }
+        println!("done");
     }
 }
 
@@ -230,7 +248,7 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){
+            code: "function sub(int a = 9, int b = 2 + 3){}
 
 
 

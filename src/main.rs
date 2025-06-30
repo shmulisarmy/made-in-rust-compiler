@@ -91,7 +91,12 @@ fn main() {
             }
         }
 
-        function do_stuff(){}
+        function main(int a){
+            do_stuff()
+        }
+        function do_stuff(){
+        
+        }
 
 
 

@@ -75,6 +75,11 @@ pub trait CodeBlock{
                     let expression = Expression::new(t, '\n', '}');
                     self.body_ptr().push(ValidInCodeBlock::Expression(expression));
                 }
+                "class" | "function" => {
+                    let next_word_size = t.peek_next_word().len();
+                    t.user_error(t.parse_index, t.parse_index+next_word_size);
+                    panic!("cannot declare function or class inside another function");
+                }
                 _ => {
                     dbg!(t.peek_next_word());
                     t.user_error(t.parse_index, t.parse_index + 1);
