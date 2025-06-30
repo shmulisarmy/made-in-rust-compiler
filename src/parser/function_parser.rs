@@ -13,6 +13,8 @@ use crate::parser::If_parser::If;
 
 use crate::comp;
 
+use crate::SyntaxNode;
+
 #[derive(Debug)]
 pub struct Param {
     pub name: String,
@@ -83,7 +85,13 @@ pub struct Function {
 }
 
 impl Function {
-    pub fn new(t: &mut Tokenizer) -> Self {
+    /// Creates a new Function node, pushes it to the parser context, parses the body, and pops it after parsing.
+    ///
+    /// # Context-walking logic (future):
+    /// To resolve a variable/type, iterate backwards through the context stack (Vec<SyntaxNode>),
+    /// checking each scope for the definition. The nearest enclosing scope wins. This enables
+    /// shadowing and proper scoping for variables/types.
+    pub fn new(t: &mut Tokenizer, parser_context: &mut Vec<SyntaxNode>) -> Self {
         Self::preview_scan(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('(');
@@ -99,14 +107,18 @@ impl Function {
             }
         };
 
-        let mut res = Self {
+        parser_context.push(SyntaxNode::Function(Function {
             name,
             params,
             body: Vec::new(),
             return_type,
+        }));
+        let mut node = match parser_context.pop().unwrap() {
+            SyntaxNode::Function(f) => f,
+            _ => unreachable!("Expected Function node on context stack"),
         };
-        res.parse_body(t);
-        res
+        node.parse_body(t, parser_context);
+        node
     }
     fn preview_scan(t: &mut Tokenizer) {
         use crate::previewScannerUtils::*;
@@ -159,38 +171,28 @@ impl CodeBlock for Function{
     fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock>{
         &mut self.body
     }
-
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::SyntaxNode;
 
     #[test]
     fn test_function_parser() {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "
-            
-            function sub(int a, int b){}
-
-
-
-            "
-            .to_string(),
+            code: "\nfunction sub(int a, int b){}\n\n\n\n".to_string(),
             parse_index: 0,
         };
-
+        let mut context = vec![];
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-
-        let _function = Function::new(&mut t);
+        let _function = Function::new(&mut t, &mut context);
         assert_eq!(_function.name, "sub");
-
         assert_eq!(_function.params.len(), 2);
         assert_eq!(_function.params[0].type_, "int");
         assert_eq!(_function.params[0].name, "a");
-
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
@@ -201,24 +203,16 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){}
-
-
-
-            "
-            .to_string(),
+            code: "function sub(int a = 9, int b = 2 + 3){}\n\n\n\n".to_string(),
             parse_index: 0,
         };
-
+        let mut context = vec![];
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-
-        let _function = Function::new(&mut t);
+        let _function = Function::new(&mut t, &mut context);
         assert_eq!(_function.name, "sub");
-
         assert_eq!(_function.params.len(), 2);
         assert_eq!(_function.params[0].type_, "int");
         assert_eq!(_function.params[0].name, "a");
-
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
@@ -228,31 +222,18 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){
-                const int a = 9
-                let int b = 2
-                a = b+9
-            }
-
-
-
-            "
-            .to_string(),
+            code: "function sub(int a = 9, int b = 2 + 3){\n                const int a = 9\n                let int b = 2\n                a = b+9\n            }\n\n\n\n            ".to_string(),
             parse_index: 0,
         };
-
+        let mut context = vec![];
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-
-        let _function = Function::new(&mut t);
+        let _function = Function::new(&mut t, &mut context);
         assert_eq!(_function.name, "sub");
-
         assert_eq!(_function.params.len(), 2);
         assert_eq!(_function.params[0].type_, "int");
         assert_eq!(_function.params[0].name, "a");
-
         assert_eq!(_function.params[1].type_, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
-   
 }
