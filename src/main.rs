@@ -49,8 +49,7 @@ fn main() {
     let mut t = Tokenizer {
         file_name: file!(),
         start_line: line!() as usize,
-        code: "
-        class Person{
+        code: "class Person{
             int age = b + c * add(3*7)
             string name = 'John Doe'
             string email = \"hello world\"

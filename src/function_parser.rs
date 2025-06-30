@@ -223,7 +223,9 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a, int b){}
+            code: "
+            
+            function sub(int a, int b){}
 
 
 
