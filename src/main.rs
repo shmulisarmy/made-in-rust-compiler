@@ -1,3 +1,4 @@
+mod code_block;
 mod If_parser;
 mod previewScannerUtils;
 mod utils;
@@ -67,18 +68,34 @@ fn main() {
         function add(int a = 9, int b) Person<int?> {
             let int a = operation_map
             let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
         }
 
+        function do_stuff(){}
 
-        while (a + b){
-            a  = 9
-            b = 2
-        }
 
-        if a+b{
-            a  = 9
-            b = 2
-        }
+
+        
 
         "
         .to_string(),
@@ -96,14 +113,15 @@ fn main() {
                 let _function = Function::new(&mut t);
                 _function.display();
             }
-            "while" => {
-                let _while = While::new(&mut t);
-                _while.display();
+            "const" => {
+                let _var = Var::new(&mut t);
+                _var.display();
             }
-            "if" => {
-                let _if = If::new(&mut t);
-                _if.display();
+            "let" => {
+                let _var = Var::new(&mut t);
+                _var.display();
             }
+
             _ => {
                 t.expect_char('\n');
             }

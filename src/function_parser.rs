@@ -1,3 +1,5 @@
+use crate::code_block::CodeBlock;
+use crate::code_block::ValidInCodeBlock;
 use crate::expression::Expression;
 use crate::expression::ExpressionPiece;
 use crate::previewScannerUtils::looks_like_type;
@@ -5,6 +7,8 @@ use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
 use crate::type_parser::Type_;
 use crate::utils::red;
+use crate::while_parser::While;
+use crate::If_parser::If;
 use std::fmt::Display;
 
 use crate::comp;
@@ -49,7 +53,7 @@ pub struct Var {
 }
 
 impl Var {
-    fn new(t: &mut Tokenizer) -> Self {
+    pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
         let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
@@ -84,7 +88,7 @@ impl Var {
             panic!("{}", red("expected type".to_string()));
         }
     }
-    fn display(&self) {
+    pub fn display(&self) {
         println!("Var {} {}", self.type_.to_string(), self.name);
     }
 }
@@ -95,13 +99,15 @@ pub enum ValidInFunctionBody {
     Expression(Expression),
     FunctionCall(FunctionCall),
     Var(Var),
+    While(While),
+    If(If),
 }
 // we'e soon move this to its own file
 
 pub struct Function {
     pub name: String,
     pub params: Vec<Param>,
-    pub body: Vec<ValidInFunctionBody>,
+    pub body: Vec<ValidInCodeBlock>,
     pub return_type: Type_,
 }
 
@@ -150,14 +156,20 @@ impl Function {
         println!(")");
         for field in &self.body {
             match field {
-                ValidInFunctionBody::Expression(expression) => {
+                ValidInCodeBlock::Expression(expression) => {
                     println!("{:?}", expression);
                 }
-                ValidInFunctionBody::FunctionCall(function_call) => {
+                ValidInCodeBlock::FunctionCall(function_call) => {
                     println!("{:?}", function_call);
                 }
-                ValidInFunctionBody::Var(var) => {
+                ValidInCodeBlock::Var(var) => {
                     println!("{:?}", var);
+                }
+                ValidInCodeBlock::While(while_) => {
+                    println!("{:?}", while_);
+                }
+                ValidInCodeBlock::If(if_) => {
+                    println!("{:?}", if_);
                 }
             }
         }
@@ -165,34 +177,18 @@ impl Function {
         println!("}}");
     }
 
-    pub fn parse_body(&mut self, t: &mut Tokenizer) {
-        t.expect_char('{');
-        t.eat_all_spaces();
-        dbg!(t.peek_next_word());
-        while !t.optionaly_expect_char('}') {
-            t.eat_all_spaces();
-            dbg!(t.peek_next_word());
-            match t.peek_next_word() {
-                "const" => {
-                    println!("found token const");
-                    t.expect(TokenType::KEYWORD);
-                    let var = Var::new(t);
-                    self.body.push(ValidInFunctionBody::Var(var));
-                }
-                "let" => {
-                    println!("found token let");
-                    t.expect(TokenType::KEYWORD);
-                    let var = Var::new(t);
-                    self.body.push(ValidInFunctionBody::Var(var));
-                }
-                _ => {
-                    println!("didnt find token const or let");
-                    let expression = Expression::new(t, '\n', '}');
-                    self.body.push(ValidInFunctionBody::Expression(expression));
-                }
-            }
-        }
+    
+}
+
+
+impl CodeBlock for Function{
+    fn get_body(&self) -> & Vec<ValidInCodeBlock>{
+        &self.body
     }
+    fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock>{
+        &mut self.body
+    }
+
 }
 
 #[cfg(test)]
@@ -234,7 +230,7 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){}
+            code: "function sub(int a = 9, int b = 2 + 3){
 
 
 

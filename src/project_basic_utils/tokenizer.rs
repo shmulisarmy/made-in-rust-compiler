@@ -82,6 +82,7 @@ impl<'a> Tokenizer<'a> {
             panic!("your at the end of the file in a position where you still need to parse");
         }
         if self.current_char() != letter{
+            self.user_error(self.parse_index, self.parse_index + 1);
             panic!("expected {} but got {}", letter, self.current_char());
         }
         self.parse_index += 1;
@@ -283,7 +284,7 @@ impl<'a> Tokenizer<'a> {
     //ui methods
     pub fn user_error(&self, start_index: Int, end_index: Int) {
         println!(
-            "{}\x1b[31;4m{}\x1b[0m{}",
+            "{}\x1b[31;4m--{}--\x1b[0m{}",
             &self.code[..start_index],
             &self.code[start_index..end_index],
             &self.code[end_index..]
@@ -291,7 +292,8 @@ impl<'a> Tokenizer<'a> {
         let (line, column) = self.find_line_and_column(end_index);
         let error_location_link = format!("{}:{}:{}", self.file_name, self.start_line + line, column);
         println!("{} {}", red("error".to_string()), blue(error_location_link));
-        process::exit(1); // 1 means error; 0 means success
+        // panic!("stack trace view");
+        // process::exit(1); // 1 means error; 0 means success
               
     }
 

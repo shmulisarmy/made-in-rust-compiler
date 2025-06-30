@@ -1,3 +1,5 @@
+use crate::code_block::{CodeBlock, ValidInCodeBlock};
+use crate::function_parser::ValidInFunctionBody;
 use crate::project_basic_utils::token::TokenType;
 use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::expression::Expression;
@@ -5,10 +7,10 @@ use crate::expression::Expression;
 
 use crate::comp;
 
-
+#[derive(Debug)]
 pub struct While {
     pub condition: Expression,
-    pub body: Vec<Expression>,
+    pub body: Vec<ValidInCodeBlock>,
 }
 
 impl While {
@@ -19,10 +21,8 @@ impl While {
 
         t.eat_all_spaces();
 
-        t.expect_char('{');
-        t.eat_all_spaces();
-        let body = comp![Expression::new(t, '\n', '}'); until t.optionaly_expect_char('}')];
-        let res = Self { condition, body };
+        let mut res = Self { condition, body: vec![] };
+        res.parse_body(t);
         res
     }
     pub fn display(&self) {
@@ -32,6 +32,19 @@ impl While {
             println!("{:?}", field);
         }
     }
+}
+
+
+impl CodeBlock for While{
+    fn get_body(&self) -> & Vec<ValidInCodeBlock>{
+        &self.body
+    }
+
+    fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock> {
+        &mut self.body
+
+    }
+    
 }
 
 #[cfg(test)]

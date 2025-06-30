@@ -1,12 +1,16 @@
+use crate::code_block::CodeBlock;
+use crate::code_block::ValidInCodeBlock;
+use crate::expression::ExpressionPiece;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
 
 use crate::expression::Expression;
 use crate::comp;
 
+#[derive(Debug)]
 pub struct If {
     pub condition: Expression,
-    pub body: Vec<Expression>,
+    pub body: Vec<ValidInCodeBlock>,
 }
 
 impl If {
@@ -20,11 +24,8 @@ impl If {
         };
 
         t.eat_all_spaces();
-
-        t.expect_char('{');
-        t.eat_all_spaces();
-        let body = comp![Expression::new(t, '\n', '}'); until t.optionaly_expect_char('}')];
-        let res = Self { condition, body };
+        let mut res = Self { condition, body: vec![] };
+        res.parse_body(t);
         res
     }
     pub fn display(&self) {
@@ -35,6 +36,18 @@ impl If {
         }
     }
 }
+
+impl CodeBlock for If{
+    fn get_body(&self) -> & Vec<ValidInCodeBlock>{
+        &self.body
+    }
+
+    fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock> {
+        &mut self.body
+
+    }
+    
+} 
 
 #[cfg(test)]
 mod tests {
