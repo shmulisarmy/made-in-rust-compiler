@@ -2,10 +2,6 @@ use crate::libs::linkedList;
 use crate::precedence_order::absorb_neighbors;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
-// Usage: pipe!(5 => double => add_one => to_string)
-
-// Usage: time_it!("Database query", { expensive_operation() });
-
 
 use crate::comp;
 use crate::until;

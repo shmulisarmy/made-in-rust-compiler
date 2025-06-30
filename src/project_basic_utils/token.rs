@@ -8,7 +8,6 @@ pub enum TokenType {
     KEYWORD,
     NUMBER,
     STRING,
-    // CHARACTER,
     PUNCTUATION,
     OPERATOR,
     // DELIMITER,
