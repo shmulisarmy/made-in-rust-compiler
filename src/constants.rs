@@ -1,5 +1,5 @@
-use crate::mapTrie::MapTrie;
-use crate::trie::Trie;
+use crate::libs::mapTrie::MapTrie;
+use crate::libs::trie::Trie;
 use std::sync::LazyLock;
 use std::sync::Mutex;
 

@@ -1,5 +1,5 @@
 use crate::expression::Expression;
-use crate::linkedList::*;
+use crate::libs::linkedList::*;
 
 #[cfg(test)]
 mod tests {

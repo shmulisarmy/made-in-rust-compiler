@@ -7,13 +7,19 @@ use std::sync::{LazyLock, Mutex};
 mod constants;
 mod expression;
 mod function_parser;
-mod linkedList;
-mod macros;
-mod mapTrie;
 mod precedence_order;
 mod token;
 mod tokenizer;
-mod trie;
+
+
+mod libs{
+    pub mod trie;
+    pub mod mapTrie;
+    pub mod linkedList;
+    pub mod macros;
+}
+
+
 mod type_parser;
 
 use token::*;

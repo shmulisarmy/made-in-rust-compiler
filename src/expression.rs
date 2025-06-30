@@ -1,4 +1,4 @@
-use crate::linkedList;
+use crate::libs::linkedList;
 use crate::precedence_order::absorb_neighbors;
 use crate::token::TokenType;
 use crate::tokenizer::Tokenizer;
@@ -65,7 +65,7 @@ pub struct Expression(pub ExpressionPiece);
 impl Expression {
     pub fn new(t: &mut Tokenizer, separator: char, scope_ender: char) -> Self {
         println!("about to parse expression");
-        use crate::linkedList::*;
+        use crate::libs::linkedList::*;
         let mut tokens = LinkedList::new();
 
         until!(
