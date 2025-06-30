@@ -1,3 +1,4 @@
+mod var_parser;
 mod code_block;
 mod If_parser;
 mod previewScannerUtils;
@@ -32,6 +33,7 @@ use project_basic_utils::tokenizer::*;
 use expression::*;
 use function_parser::*;
 
+use crate::var_parser::Var;
 use crate::If_parser::If;
 use crate::while_parser::While;
 // enum SyntaxNode{
