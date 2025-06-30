@@ -1,8 +1,8 @@
-use crate::expression::Expression;
-use crate::expression::ExpressionPiece;
+use crate::parser::expression::Expression;
+use crate::parser::expression::ExpressionPiece;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
-use crate::type_parser::Type_;
+use crate::parser::type_parser::Type_;
 use crate::utils::red;
 
 
@@ -62,9 +62,9 @@ mod tests {
     use super::*;
     use crate::project_basic_utils::token::TokenType;
     use crate::project_basic_utils::tokenizer::Tokenizer;
-    use crate::type_parser::Type_;
-    use crate::expression::ExpressionPiece;
-    use crate::expression::Expression;
+    use crate::parser::type_parser::Type_;
+    use crate::parser::expression::ExpressionPiece;
+    use crate::parser::expression::Expression;
 
     #[test]
     fn test_var_with_default_value() {

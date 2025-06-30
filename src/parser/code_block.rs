@@ -1,13 +1,13 @@
 use core::panic;
 
-use crate::expression::Expression;
-use crate::expression::FunctionCall;
-use crate::function_parser::ValidInFunctionBody;
+use crate::parser::expression::Expression;
+use crate::parser::expression::FunctionCall;
+use crate::parser::function_parser::ValidInFunctionBody;
 use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::utils::yellow;
-use crate::var_parser::Var;
-use crate::If_parser::If;
-use crate::while_parser::While;
+use crate::parser::var_parser::Var;
+use crate::parser::If_parser::If;
+use crate::parser::while_parser::While;
 use crate::project_basic_utils::token::TokenType;
 
 

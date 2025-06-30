@@ -1,32 +1,34 @@
-use crate::code_block::{CodeBlock, ValidInCodeBlock};
-use crate::function_parser::ValidInFunctionBody;
-use crate::project_basic_utils::token::TokenType;
-use crate::project_basic_utils::tokenizer::Tokenizer;
-use crate::expression::Expression;
-
-
+use crate::parser::code_block::CodeBlock;
+use crate::parser::code_block::ValidInCodeBlock;
+use crate::parser::expression::ExpressionPiece;
+use crate::project_basic_utils::token::*;
+use crate::project_basic_utils::tokenizer::*;
+use crate::parser::expression::Expression;
 use crate::comp;
 
 #[derive(Debug)]
-pub struct While {
+pub struct If {
     pub condition: Expression,
     pub body: Vec<ValidInCodeBlock>,
 }
 
-impl While {
+impl If {
     pub fn new(t: &mut Tokenizer) -> Self {
-        t.expect_char('(');
-        let condition = Expression::new(t, ',', ')');
-        t.expect_char(')');
+        let condition = if t.optionaly_expect_char('(') {
+            let res = Expression::new(t, ',', ')');
+            t.expect_char(')');
+            res
+        } else {
+            Expression::new(t, '\n', '{')
+        };
 
         t.eat_all_spaces();
-
         let mut res = Self { condition, body: vec![] };
         res.parse_body(t);
         res
     }
     pub fn display(&self) {
-        println!("displaying While statement");
+        println!("displaying If statement");
         dbg!(&self.condition);
         for field in &self.body {
             println!("{:?}", field);
@@ -34,8 +36,7 @@ impl While {
     }
 }
 
-
-impl CodeBlock for While{
+impl CodeBlock for If{
     fn get_body(&self) -> & Vec<ValidInCodeBlock>{
         &self.body
     }
@@ -45,7 +46,7 @@ impl CodeBlock for While{
 
     }
     
-}
+} 
 
 #[cfg(test)]
 mod tests {
@@ -57,7 +58,7 @@ mod tests {
             file_name: file!(),
             start_line: line!() as usize,
             code: "
-            while (a + b){
+            if (a + b){
                 a  = 9
                 b = 2
             }
@@ -66,8 +67,8 @@ mod tests {
             parse_index: 0,
         };
 
-        assert_eq!(t.expect(TokenType::KEYWORD), "while");
-        let _while = While::new(&mut t);
-        assert_eq!(_while.body.len(), 2);
+        assert_eq!(t.expect(TokenType::KEYWORD), "if");
+        let _If = If::new(&mut t);
+        assert_eq!(_If.body.len(), 2);
     }
 }

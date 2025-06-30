@@ -1,42 +1,28 @@
-mod var_parser;
-mod code_block;
-mod If_parser;
+
 mod previewScannerUtils;
 mod utils;
-mod while_parser;
 use std::sync::{LazyLock, Mutex};
 
 
 mod constants;
-mod expression;
-mod function_parser;
+
+
+mod parser;
 mod precedence_order;
-mod project_basic_utils{
-    pub mod token;
-    pub mod tokenizer;
+mod project_basic_utils;
 
-}
-
-    mod libs{
-    pub mod trie;
-    pub mod mapTrie;
-    pub mod linkedList;
-    pub mod macros;
-}
+mod libs;
 
 
-mod type_parser;
 
 use project_basic_utils::token::*;
 use project_basic_utils::tokenizer::*;
 
-use expression::*;
-use function_parser::*;
 
-use crate::var_parser::Var;
-use crate::If_parser::If;
-use crate::while_parser::While;
-// enum SyntaxNode{
+use parser::function_parser::*;
+use parser::var_parser::Var;
+
+// eparser::num SyntaxNode{
 //     Class(Class),
 //     Function(Function),
 // }
@@ -48,9 +34,8 @@ use crate::while_parser::While;
 //     // NumberLiteral(Literal),
 // }
 
-use crate::expression::Expression;
-mod class_parser;
-use class_parser::Class;
+use parser::expression::Expression;
+use parser::class_parser::Class;
 
 static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| Mutex::new(Vec::new()));
 

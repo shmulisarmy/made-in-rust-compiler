@@ -1,16 +1,15 @@
-use crate::code_block::CodeBlock;
-use crate::code_block::ValidInCodeBlock;
-use crate::expression::Expression;
-use crate::expression::ExpressionPiece;
+use crate::parser::code_block::CodeBlock;
+use crate::parser::code_block::ValidInCodeBlock;
+use crate::parser::expression::Expression;
+use crate::parser::expression::ExpressionPiece;
 use crate::previewScannerUtils::looks_like_type;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
-use crate::type_parser::Type_;
+use crate::parser::type_parser::Type_;
+use crate::parser::var_parser::Var;
 use crate::utils::red;
-use crate::var_parser::Var;
-use crate::while_parser::While;
-use crate::If_parser::If;
-
+use crate::parser::while_parser::While;
+use crate::parser::If_parser::If;
 
 use crate::comp;
 
@@ -65,7 +64,7 @@ impl Param {
 // we'e soon move this to its own file
 
 
-use crate::expression::FunctionCall;
+use crate::parser::expression::FunctionCall;
 use crate::until;
 pub enum ValidInFunctionBody {
     Expression(Expression),

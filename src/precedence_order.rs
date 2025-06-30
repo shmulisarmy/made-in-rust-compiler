@@ -1,4 +1,4 @@
-use crate::expression::Expression;
+use crate::parser::expression::Expression;
 use crate::libs::linkedList::*;
 
 #[cfg(test)]
@@ -30,9 +30,9 @@ static OPERATOR_PRECEDENCE: LazyLock<std::collections::HashMap<String, u8>> = La
 
 use std::fmt::Display;
 
-use crate::expression::ExpressionPiece;
-use crate::expression::FunctionCall;
-use crate::expression::OperatorToString;
+use crate::parser::expression::ExpressionPiece;
+use crate::parser::expression::FunctionCall;
+use crate::parser::expression::OperatorToString;
 
 fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) -> bool {
     let double_next = ll.get_two_down(node_index);
