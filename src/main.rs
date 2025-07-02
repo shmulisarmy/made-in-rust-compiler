@@ -1,3 +1,4 @@
+
 mod previewScannerUtils;
 mod utils;
 use std::sync::{LazyLock, Mutex};
@@ -36,27 +37,28 @@ use parser::var_parser::Var;
 use parser::expression::Expression;
 use parser::class_parser::Class;
 
-use crate::parser::while_parser::While;
-use crate::parser::If_parser::If;
-
-static Classes: LazyLock<Mutex<Vec<Class>>> = LazyLock::new(|| Mutex::new(Vec::new()));
-
-static Functions: LazyLock<Mutex<Vec<Function>>> = LazyLock::new(|| Mutex::new(Vec::new()));
-
-static Vars: LazyLock<Mutex<Vec<Var>>> = LazyLock::new(|| Mutex::new(Vec::new()));
 
 
 
-enum SyntaxNode{
-    Class(Class),
-    Function(Function),
-    Var(Var),
-    While(While),
-    If(If),
+
+
+struct File {
+    functions: Vec<Function>,       
+    classes: Vec<Class>,
+    variables: Vec<Var>,
 }
 
 
-pub static PARSE_CONTEXT: LazyLock<Mutex<Vec< SyntaxNode>>> = LazyLock::new(|| Mutex::new(Vec::new()));
+impl File{
+    fn new ()-> Self {
+        Self {
+            functions: Vec::new(),
+            classes: Vec::new(),
+            variables: Vec::new(),
+        }
+    }
+}
+
 
 fn main() {
     color_backtrace::install();
@@ -68,8 +70,6 @@ fn main() {
             string name = 'John Doe'
             string email = \"hello world\"
         }
-
-        const int a = 9
 
         function add(int a = 9, int b) Person<int?> {
             let int a = operation_map
@@ -115,30 +115,30 @@ fn main() {
     // function add(int a = 9, int b = sub(3*7))
 
 
-    let mut parse_context: std::sync::MutexGuard<'_, Vec<SyntaxNode>> = PARSE_CONTEXT.lock().unwrap();
+
+    let mut this_file = File::new();
 
     while t.in_range() {
         match t.expect(TokenType::KEYWORD) {
             "class" => {
-                let class_val = Class::new(&mut t, &mut parse_context);
-                class_val.display();
-                Classes.lock().unwrap().push(class_val);
+                let _class = Class::new(&mut t);
+                (&_class).display();
+                this_file.classes.push(_class);
             }
             "function" => {
-                let function_val = Function::new(&mut t, &mut parse_context);
-                function_val.display();
-                Functions.lock().unwrap().push(function_val);
+                let _function = Function::new(&mut t);
+                (&_function).display();
+                this_file.functions.push(_function);
             }
             "const" => {
                 let _var = Var::new(&mut t);
-                _var.display();
-                Vars.lock().unwrap().push(_var);
-
+                (&_var).display();
+                this_file.variables.push(_var);
             }
             "let" => {
                 let _var = Var::new(&mut t);
-                _var.display();
-                Vars.lock().unwrap().push(_var);
+                (&_var).display();
+                this_file.variables.push(_var);
             }
 
             _ => {
