@@ -1,8 +1,9 @@
 use core::panic;
-
+use crate::file::*;
 use crate::parser::expression::Expression;
 use crate::parser::expression::FunctionCall;
 use crate::parser::function_parser::ValidInFunctionBody;
+use crate::parser::type_parser::Type_;
 use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::utils::yellow;
 use crate::parser::var_parser::Var;
@@ -111,7 +112,17 @@ pub trait CodeBlock{
         return false;
     }
 
+
+
+
+
+
+
+
+
+
 }
+    //type checking
 
 
 
@@ -120,3 +131,24 @@ pub trait CodeBlock{
 
 
 
+fn var_is_in_scope_or_global(file : &'static File, scope_context: Vec<&'static dyn CodeBlock>, type_: &Type_)-> &'static Var{
+        for scope in scope_context.iter().rev(){
+            for  item in scope.get_body(){
+                match item{
+                    ValidInCodeBlock::Var(var) => {
+                        if var.type_.name == type_.name{
+                            return &var;
+                        }
+                    }
+                    _ => {}
+                    
+                }
+            }
+        }
+        for var in &file.variables{
+            if var.type_.name == type_.name{
+                return var;
+            }
+        }
+        panic!("var {} is not in scope", type_.name);
+}
