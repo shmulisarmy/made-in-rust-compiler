@@ -16,14 +16,14 @@ use crate::comp;
 #[derive(Debug)]
 pub struct Param {
     pub name: String,
-    pub type_: String,
+    pub type_: Type_,
     pub default_value: Expression,
 }
 
 impl Param {
     fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
-        let type_ = t.expect(TokenType::IDENTIFIER).to_string();
+        let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, ',', ')');
@@ -122,7 +122,7 @@ impl Function {
     pub fn display(&self) {
         println!("Function {} (", self.name);
         for field in &self.params {
-            println!("    {} {},", field.type_, field.name);
+            println!("    {} {},", field.type_.name, field.name);
         }
         println!(")");
         for field in &self.body {
@@ -188,10 +188,10 @@ mod tests {
         assert_eq!(_function.name, "sub");
 
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
 
-        assert_eq!(_function.params[1].type_, "int");
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
@@ -216,10 +216,10 @@ mod tests {
         assert_eq!(_function.name, "sub");
 
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
 
-        assert_eq!(_function.params[1].type_, "int");
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
@@ -247,10 +247,10 @@ mod tests {
         assert_eq!(_function.name, "sub");
 
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
 
-        assert_eq!(_function.params[1].type_, "int");
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
