@@ -8,9 +8,9 @@ use crate::utils::red;
 
 #[derive(Debug, Clone, PartialEq, Eq, Ord, PartialOrd)]
 pub struct Var {
-    name: String,
-    type_: Type_,
-    default_value: Expression,
+    pub name: String,
+    pub type_: Type_,
+    pub default_value: Expression,
 }
 
 impl Var {

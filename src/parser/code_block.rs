@@ -18,6 +18,7 @@ pub enum ValidInCodeBlock{
     Var(Var),
     While(While),
     If(If),
+    // ScopeJumpIndex(usize)
 }
 
 
@@ -58,15 +59,15 @@ pub trait CodeBlock{
                 }
                 "while" => {
                     assert_eq!(t.expect(TokenType::KEYWORD).to_string(), "while");
-                    let _while = While::new(t);
-                    _while.display();
-                    self.body_ptr().push(ValidInCodeBlock::While(_while));
+                    let while_val = While::new(t);
+                    while_val.display();
+                    self.body_ptr().push(ValidInCodeBlock::While(while_val));
                 }
                 "if" => {
                     assert_eq!(t.expect(TokenType::KEYWORD).to_string(), "if");
-                    let _if = If::new( t);
-                    _if.display();
-                    self.body_ptr().push(ValidInCodeBlock::If(_if));
+                    let if_val = If::new(t);
+                    if_val.display();
+                    self.body_ptr().push(ValidInCodeBlock::If(if_val));
                 }
                 "}" => {
                     panic!("didnt find token const or let");
@@ -82,8 +83,8 @@ pub trait CodeBlock{
                 }
                 _ => {
                     dbg!(t.peek_next_word());
-                    t.user_error(t.parse_index, t.parse_index + 1);
-                    println!("didnt find token const or let");
+                    // t.user_error(t.parse_index, t.parse_index + 1);
+                    // println!("didnt find token const or let");
                     let expression = Expression::new(t, '\n', '}');
                     self.body_ptr().push(ValidInCodeBlock::Expression(expression));
                 }

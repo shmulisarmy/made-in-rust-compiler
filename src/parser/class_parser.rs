@@ -12,9 +12,9 @@ use crate::until;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 pub struct Field {
-    name: String,
-    type_: Type_,
-    default_value: Expression,
+    pub name: String,
+    pub type_: Type_,
+    pub default_value: Expression,
 }
 
 impl Field {
@@ -41,8 +41,8 @@ impl Field {
 }
 
 pub struct Class {
-    name: String,
-    fields: Vec<Field>,
+    pub name: String,
+    pub fields: Vec<Field>,
 }
 
 impl Class {
