@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use crate::parser::expression::Expression;
 use crate::parser::expression::ExpressionPiece;
+use crate::parser::type_parser::Type_;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
 use crate::utils::red;
@@ -12,13 +13,13 @@ use crate::until;
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 pub struct Field {
     name: String,
-    type_: String,
+    type_: Type_,
     default_value: Expression,
 }
 
 impl Field {
     fn new(t: &mut Tokenizer) -> Self {
-        let type_ = t.expect(TokenType::IDENTIFIER).to_string();
+        let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, '\n', '\n');
@@ -57,7 +58,7 @@ impl Class {
     pub fn display(&self) {
         println!("Class {} {{", self.name);
         for field in &self.fields {
-            println!("    {} {}", field.type_, field.name);
+            println!("    {} {}", field.type_.to_string(), field.name);
         }
         println!("}}");
     }
@@ -99,13 +100,13 @@ mod tests {
             assert_eq!(_class.name, "Person");
             assert_eq!(_class.fields.len(), 3);
 
-            assert_eq!(_class.fields[0].type_, "int");
+            assert_eq!(_class.fields[0].type_.name, "int");
             assert_eq!(_class.fields[0].name, "age");
 
-            assert_eq!(_class.fields[1].type_, "string");
+            assert_eq!(_class.fields[1].type_.name, "string");
             assert_eq!(_class.fields[1].name, "name");
 
-            assert_eq!(_class.fields[2].type_, "string");
+            assert_eq!(_class.fields[2].type_.name, "string");
             assert_eq!(_class.fields[2].name, "email");
         }
     }
