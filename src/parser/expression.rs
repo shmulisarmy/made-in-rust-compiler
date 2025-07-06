@@ -43,6 +43,7 @@ pub struct Expression(pub ExpressionPiece);
 
 impl Expression {
     pub fn new(t: &mut Tokenizer, separator: char, scope_ender: char) -> Self {
+        //todo: remove the idea of the separator, where we eat up the token and just have tokens that when we wee we stop and dont take any action on. if we wanna eat that token wele do it form the call site
         println!("about to parse expression");
         use crate::libs::linkedList::*;
         let mut tokens = LinkedList::new();
@@ -53,11 +54,31 @@ impl Expression {
             }
         );
 
+
+        //display
+        println!("about to display expression tokens");
+        let mut cur = tokens.head;
+        while let Some(node_index) = cur {
+            match &tokens.storage[node_index].value {
+                ExpressionPiece::FunctionCall(f) => println!("FunctionCall {}", f.name),
+                ExpressionPiece::Variable(v) => println!("Variable {}", v),
+                ExpressionPiece::StringLiteral(v) => println!("StringLiteral {}", v),
+                ExpressionPiece::NumberLiteral(v) => println!("NumberLiteral {}", v),
+                ExpressionPiece::Operator(v) => println!("Operator {}", v),
+                ExpressionPiece::Placeholder(v) => println!("Placeholder {}", v),
+            }
+            cur = tokens.storage[node_index].next;
+        }
+        println!("done displaying expression tokens");
+        
+
+
         // by scope_ender we make sure that when we do the check we don't eat up the char bc we want the parent syntaxNode to see and know to stop
         // println!("about to display expression tokens");
         // for token in tokens.iter() {
         //     dbg!(&token);
         // }
+
         let mut current = tokens.head;
         while let Some(node_index) = current {
             if let ExpressionPiece::Operator(op) = &tokens.storage[node_index].value {
@@ -66,7 +87,11 @@ impl Expression {
             current = tokens.storage[node_index].next;
         }
 
-        dbg!(&tokens.len());
+        if tokens.len() == 0 {
+            return Self(ExpressionPiece::Placeholder(true));
+        }
+
+            
         dbg!(&tokens.storage[tokens.head.unwrap()].value);
         println!("done parsing expression");
         Self(tokens.storage[tokens.head.unwrap()].value.clone())

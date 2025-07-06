@@ -1,4 +1,4 @@
-use crate::parser::{class_parser::Class, code_block::{CodeBlock, ValidInCodeBlock}, function_parser::Function, type_parser::Type_, var_parser::Var};
+use crate::{parser::{class_parser::Class, code_block::{CodeBlock, ValidInCodeBlock}, function_parser::Function, type_parser::Type_, var_parser::Var}, utils::green};
 
 pub struct File {
     pub functions: Vec<Function>,       
@@ -44,7 +44,7 @@ impl File{
         for _class in &self.classes{
             for field in &_class.fields{
                 if !self.is_allowed_type(&field.type_){
-                    panic!("type {} (used as field {} of class {}) is unknown for the compiler", field.name, field.type_.to_string(), _class.name);
+                    panic!("type {} (used as field {} of class {}) is unknown to the compiler", field.type_.to_string(), field.name,green(&_class.name));
                 }
             }
         }
@@ -72,7 +72,7 @@ impl File{
     }
 
 
-    fn typeCheck(&self){
+    pub fn typeCheck(&self){
         self.typeCheckVars();
         self.typeCheckClasses();
         self.typeCheckFunctions();

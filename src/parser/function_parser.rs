@@ -1,3 +1,5 @@
+use std::string;
+
 use crate::parser::code_block::CodeBlock;
 use crate::parser::code_block::ValidInCodeBlock;
 use crate::parser::expression::Expression;
@@ -46,7 +48,6 @@ impl Param {
     fn preview_scan(t: &mut Tokenizer) {
         t.eat_spaces();
         dbg!(t.current_char());
-        println!("proo");
         if !looks_like_type(t) {
             let next_token = t.next();
             t.user_error(
@@ -105,8 +106,62 @@ impl Function {
             body: Vec::new(),
             return_type,
         };
-        res.parse_body(t);
+        res.actual_parse_body(t);
         res
+    }
+
+    fn actual_parse_body(&mut self, t: &mut Tokenizer)  {
+        t.expect_char('{');
+        until!(t.optionaly_expect_char('}');{
+            let next_ident = t.peek_next_word();
+            if !next_ident.len() > 0 {
+            }
+            match next_ident {
+                "if" => {
+                    self.body.push(ValidInCodeBlock::IfStartMarker);
+                    let cur_body_stack_pos = self.body.len()-1;
+                    if t.optionaly_expect_char('(') {
+                        let expression = Expression::new(t, ')', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }  else {
+                        let expression = Expression::new(t, '¥', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }
+                    self.actual_parse_body(t);
+                    self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
+                }
+                "while" => {
+                    self.body.push(ValidInCodeBlock::WhileStartMarker);
+                    let cur_body_stack_pos = self.body.len()-1;
+                    if t.optionaly_expect_char('(') {
+                        let expression = Expression::new(t, ')', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }  else {
+                        let expression = Expression::new(t, '¥', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }
+                        self.actual_parse_body(t);
+                    self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
+                }
+                "const" => {
+                    t.expect(TokenType::IDENTIFIER);
+                    self.body.push(ValidInCodeBlock::Var(Var::new(t)));
+                },
+                "let" => {
+                    t.expect(TokenType::IDENTIFIER);
+                    self.body.push(ValidInCodeBlock::Var(Var::new(t)));
+                }
+                _ => {
+                    let expression = Expression::new(t, '\n', '}');
+                    self.body.push(ValidInCodeBlock::Expression(expression));
+                }
+                
+            }
+            t.eat_all_spaces();
+
+        })
+
+        
     }
     fn preview_scan(t: &mut Tokenizer) {
         use crate::previewScannerUtils::*;
@@ -141,6 +196,18 @@ impl Function {
                 }
                 ValidInCodeBlock::If(if_) => {
                     println!("{:?}", if_);
+                }
+                ValidInCodeBlock::JumpIndex(_) => {
+                    println!("{:?}", '}');
+                }
+                ValidInCodeBlock::WhileStartMarker => {
+                    println!("while (");
+                }
+                ValidInCodeBlock::IfStartMarker => {
+                    println!("if (");
+                }
+                ValidInCodeBlock::HeadEndAndBodyStartMarker => {
+                    println!("){}", '{');
                 }
             }
         }

@@ -59,7 +59,6 @@ fn main() {
         
 
 
-
         class Engine{
             int id
             string repair_station
@@ -72,12 +71,25 @@ fn main() {
             string email = \"hello world\"
         }
 
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
         
         class Person{
             Car car
-            int age = b + c * add(3*7)
+            Cat age = b + c * add(3*7)
             string name = 'John Doe'
             string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
         }
 
         function add(int a = 9, int b) Person<int?> {
@@ -159,7 +171,7 @@ fn main() {
     }
 
 
-    // this_file.typeCheck();
+    this_file.typeCheck();
 
     // expression::Expression::new(&mut t, ',', '\n');
 }

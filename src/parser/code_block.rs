@@ -1,5 +1,6 @@
 use core::panic;
 use crate::file::*;
+use crate::parser::code_block;
 use crate::parser::expression::Expression;
 use crate::parser::expression::FunctionCall;
 use crate::parser::function_parser::ValidInFunctionBody;
@@ -20,6 +21,11 @@ pub enum ValidInCodeBlock{
     While(While),
     If(If),
     // ScopeJumpIndex(usize)
+    //once i learned that the way to do it is in a stack like manner
+    WhileStartMarker,
+    IfStartMarker,
+    HeadEndAndBodyStartMarker,
+    JumpIndex(usize),
 }
 
 
@@ -121,12 +127,57 @@ pub trait CodeBlock{
 
 
 
-}
     //type checking
 
+   
+
+
+}
+
+
+enum CodeBlockType{
+    Function,
+    Class,
+    While,
+    If
+}
+
+
+// impl CodeBlockType{
+//     fn typeCheck(&self,  file: &File, scope_context: &mut Vec<&CodeBlockType>){
+//         scope_context.push(&CodeBlockType::Class);
+//         let body = match self {
+//             CodeBlockType::Function(func) => func.body(),
+//             CodeBlockType::Class => todo!(),
+//             CodeBlockType::While => todo!(),
+//             CodeBlockType::If => todo!(),
+            
+//         };
+//         for syntax_node in (self as &CodeBlock).get_body(){
+//             //recursively type check its code blocks
+//                 match syntax_node{
+//                     ValidInCodeBlock::Expression(expression) => {
+//                         expression.typeCheck(self);
+//                     }
+//                     ValidInCodeBlock::FunctionCall(function_call) => {
+//                         function_call.typeCheck(self);
+//                     }
+//                     ValidInCodeBlock::Var(var) => {
+//                         var.typeCheck(self);
+//                     }
+//                     ValidInCodeBlock::While(while_) => {
+//                         while_.typeCheck(self);
+//                     }
+//                     ValidInCodeBlock::If(if_) => {
+//                         if_.typeCheck(self);
+//                     }
+//                 }   
+//         }
 
 
 
+//     }
+// }
 
 
 
