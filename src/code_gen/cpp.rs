@@ -252,8 +252,12 @@ impl FunctionCallTokens {
 }
 
 impl FileTokens {
-    pub fn generate_cpp_code(&self, depth: usize) -> String {
+    pub fn generate_cpp_header_file(&self) -> String {
         let mut output = String::new();
+        
+        // Add header guard
+        output.push_str("#ifndef GENERATED_CODE_H\n");
+        output.push_str("#define GENERATED_CODE_H\n\n");
         
         // Add includes
         output.push_str("#include <iostream>\n");
@@ -262,13 +266,46 @@ impl FileTokens {
         output.push_str("#include <map>\n");
         output.push_str("\n");
         
-        // 1. Generate class declarations (header file style)
+        // Generate class declarations
         for class in &self.classes {
-            output.push_str(&class.generate_cpp_header(depth));
+            output.push_str(&class.generate_cpp_header(0));
             output.push('\n');
         }
         
-        // 2. Generate standalone functions
+        // Generate function declarations
+        for function in &self.functions {
+            let param_list = function.params.iter()
+                .map(|param| param.generate_cpp_code(0))
+                .collect::<Vec<String>>()
+                .join(", ");
+            let return_type = function.cpp_type_name(&function.return_type);
+            output.push_str(&format!("{} {}({});\n", return_type, function.name, param_list));
+        }
+        
+        // Generate global variable declarations
+        for var in &self.variables {
+            let type_name = var.cpp_type_name(&var.type_);
+            output.push_str(&format!("extern {} {};\n", type_name, var.name));
+        }
+        
+        output.push_str("\n#endif // GENERATED_CODE_H\n");
+        
+        output
+    }
+
+    pub fn generate_cpp_code(&self, depth: usize) -> String {
+        let mut output = String::new();
+        
+        // Include the header file
+        output.push_str("#include \"file.hpp\"\n\n");
+        
+        // Generate global variable definitions
+        for var in &self.variables {
+            output.push_str(&var.generate_cpp_code(depth));
+            output.push('\n');
+        }
+        
+        // Generate standalone functions
         for function in &self.functions {
             output.push_str(&function.function_header_generate_cpp_code(depth));
             output.push_str(&function.function_body_generate_cpp_code(depth + 1));
@@ -276,15 +313,9 @@ impl FileTokens {
             output.push('\n');
         }
         
-        // 3. Generate class method implementations
+        // Generate class method implementations
         for class in &self.classes {
             output.push_str(&class.generate_cpp_implementations(depth));
-        }
-        
-        // Generate global variables
-        for var in &self.variables {
-            output.push_str(&var.generate_cpp_code(depth));
-            output.push('\n');
         }
         
         output
@@ -300,18 +331,11 @@ impl ClassTokens {
         let public_indent = "    ".repeat(depth + 1);
         output.push_str(&format!("{}public:\n", public_indent));
         
-        // Generate class fields
+        // Generate class fields (just declarations, no default values)
         for field in &self.fields {
             let field_indent = "    ".repeat(depth + 2);
             let type_name = self.cpp_type_name(&field.type_);
-            match &field.default_value.0 {
-                crate::parser::expression::ExpressionPiece::Placeholder(false) => {
-                    output.push_str(&format!("{}    {} {};\n", field_indent, type_name, field.name));
-                }
-                _ => {
-                    output.push_str(&format!("{}    {} {} = {};\n", field_indent, type_name, field.name, self.expression_to_cpp(&field.default_value)));
-                }
-            }
+            output.push_str(&format!("{}    {} {};\n", field_indent, type_name, field.name));
         }
         
         // Add constructor declaration
