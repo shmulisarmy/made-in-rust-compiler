@@ -262,18 +262,23 @@ impl FileTokens {
         output.push_str("#include <map>\n");
         output.push_str("\n");
         
-        // Generate classes
+        // 1. Generate class declarations (header file style)
         for class in &self.classes {
-            output.push_str(&class.generate_cpp_code(depth));
+            output.push_str(&class.generate_cpp_header(depth));
             output.push('\n');
         }
         
-        // Generate functions
+        // 2. Generate standalone functions
         for function in &self.functions {
             output.push_str(&function.function_header_generate_cpp_code(depth));
             output.push_str(&function.function_body_generate_cpp_code(depth + 1));
             output.push_str(&format!("{}}}\n", "    ".repeat(depth)));
             output.push('\n');
+        }
+        
+        // 3. Generate class method implementations
+        for class in &self.classes {
+            output.push_str(&class.generate_cpp_implementations(depth));
         }
         
         // Generate global variables
@@ -287,7 +292,7 @@ impl FileTokens {
 }
 
 impl ClassTokens {
-    pub fn generate_cpp_code(&self, depth: usize) -> String {
+    pub fn generate_cpp_header(&self, depth: usize) -> String {
         let indent = "    ".repeat(depth);
         let mut output = format!("{}class {} {{\n", indent, self.name);
         
@@ -309,35 +314,61 @@ impl ClassTokens {
             }
         }
         
-        // Add constructor
+        // Add constructor declaration
         let constructor_indent = "    ".repeat(depth + 2);
-        output.push_str(&format!("{}    {}() {{\n", constructor_indent, self.name));
+        output.push_str(&format!("{}    {}();\n", constructor_indent, self.name));
+        
+        // Add method declarations (just signatures, no bodies)
+        for method in &self.methods {
+            let method_indent = "    ".repeat(depth + 2);
+            let param_list = method.params.iter()
+                .map(|param| param.generate_cpp_code(depth + 1))
+                .collect::<Vec<String>>()
+                .join(", ");
+            let return_type = method.cpp_type_name(&method.return_type);
+            output.push_str(&format!("{}    {} {}({});\n", method_indent, return_type, method.name, param_list));
+        }
+        
+        output.push_str(&format!("{}}};\n", indent));
+        
+        output
+    }
+
+    pub fn generate_cpp_implementations(&self, depth: usize) -> String {
+        let mut output = String::new();
+        
+        // Add constructor implementation
+        let indent = "    ".repeat(depth);
+        output.push_str(&format!("{}{}::{}() {{\n", indent, self.name, self.name));
         
         // Initialize fields in constructor
         for field in &self.fields {
-            let init_indent = "    ".repeat(depth + 3);
+            let init_indent = "    ".repeat(depth + 1);
             match &field.default_value.0 {
                 crate::parser::expression::ExpressionPiece::Placeholder(false) => {
                     // Don't initialize if no default value
                 }
                 _ => {
-                    output.push_str(&format!("{}        {} = {};\n", init_indent, field.name, self.expression_to_cpp(&field.default_value)));
+                    output.push_str(&format!("{}    {} = {};\n", init_indent, field.name, self.expression_to_cpp(&field.default_value)));
                 }
             }
         }
         
-        output.push_str(&format!("{}    }}\n", constructor_indent));
+        output.push_str(&format!("{}}}\n", indent));
         
-        // Add methods
+        // Add method implementations in the style ReturnType ClassName::methodName()
         for method in &self.methods {
-            let method_indent = "    ".repeat(depth + 2);
-            output.push_str(&method.function_header_generate_cpp_code(depth + 2));
-            output.push_str(&method.function_body_generate_cpp_code(depth + 3));
-            output.push_str(&format!("{}    }}\n", method_indent));
+            let return_type = method.cpp_type_name(&method.return_type);
+            let param_list = method.params.iter()
+                .map(|param| param.generate_cpp_code(depth + 1))
+                .collect::<Vec<String>>()
+                .join(", ");
+            output.push_str(&format!("{}{} {}::{}({}) {{\n", indent, return_type, self.name, method.name, param_list));
+            output.push_str(&method.function_body_generate_cpp_code(depth + 1));
+            output.push_str(&format!("{}}}\n", indent));
         }
         
-        output.push_str(&format!("{}}};\n", indent));
-        
+        output.push('\n');
         output
     }
     
