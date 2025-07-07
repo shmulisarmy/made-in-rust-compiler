@@ -1,7 +1,6 @@
 use crate::libs::mapTrie::MapTrie;
 use crate::libs::trie::Trie;
 use std::sync::LazyLock;
-use std::sync::Mutex;
 
 pub static SPACE_CHARS: LazyLock<Vec<char>> = LazyLock::new(|| vec![' ', '\t', '\n', '\r']);
 

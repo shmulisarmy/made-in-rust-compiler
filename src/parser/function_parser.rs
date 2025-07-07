@@ -6,6 +6,7 @@ use crate::parser::expression::Expression;
 use crate::parser::expression::ExpressionPiece;
 use crate::parser::type_parser::Type_;
 use crate::parser::var_parser::Var;
+
 use crate::previewScannerUtils::looks_like_type;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
@@ -159,7 +160,7 @@ impl Function {
         })
     }
     fn preview_scan(t: &mut Tokenizer) {
-        use crate::previewScannerUtils::*;
+        use crate::previewScannerUtils::looks_like_identifier;
         if !looks_like_identifier(t) {
             let next_token = t.next();
             t.user_error(

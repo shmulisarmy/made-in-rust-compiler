@@ -32,7 +32,7 @@ use std::fmt::Display;
 
 use crate::parser::expression::ExpressionPiece;
 use crate::parser::expression::FunctionCall;
-use crate::parser::expression::OperatorToString;
+use crate::parser::expression::operator_to_string;
 
 fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) -> bool {
     let double_next = ll.get_two_down(node_index);
@@ -57,7 +57,7 @@ pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIn
     let prev = ll.storage[node_index].prev;
     let next = ll.storage[node_index].next;
     ll.storage[node_index].value = ExpressionPiece::FunctionCall(FunctionCall {
-        name: OperatorToString(&ll.storage[node_index].value),
+        name: operator_to_string(&ll.storage[node_index].value),
         params: vec![
             Expression(
                 ll.storage

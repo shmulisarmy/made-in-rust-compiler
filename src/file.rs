@@ -1,7 +1,9 @@
+use std::vec;
+
 use crate::{
     parser::{
         class_parser::Class,
-        code_block::{CodeBlock, ValidInCodeBlock},
+        code_block::{CodeBlock},
         function_parser::Function,
         type_parser::Type_,
         var_parser::Var,
@@ -30,6 +32,17 @@ impl File {
                     is_pointer: false,
                 },
                 Type_ {
+                    name: "Container",
+                    sub_types: vec![Type_ {
+                        name: "Tag",
+                        sub_types: Vec::new(),
+                        is_optional: false,
+                        is_pointer: false,
+                    }],
+                    is_optional: false,
+                    is_pointer: false,
+                },
+                Type_ {
                     name: "string",
                     sub_types: Vec::new(),
                     is_optional: false,
@@ -39,7 +52,7 @@ impl File {
         }
     }
 
-    fn typeCheckVars(&self) {
+    fn type_check_vars(&self) {
         for var in &self.variables {
             if !self.is_allowed_type(&var.type_) {
                 panic!(
@@ -51,7 +64,7 @@ impl File {
         }
     }
 
-    fn typeCheckClasses(&self) {
+    fn type_check_classes(&self) {
         for _class in &self.classes {
             for field in &_class.fields {
                 if !self.is_allowed_type(&field.type_) {
@@ -66,7 +79,7 @@ impl File {
         }
     }
 
-    fn typeCheckFunctions(&self) {
+    fn type_check_functions(&self) {
         for function in &self.functions {
             for param in &function.params {
                 if !self.is_allowed_type(&param.type_) {
@@ -89,10 +102,10 @@ impl File {
         }
     }
 
-    pub fn typeCheck(&self) {
-        self.typeCheckVars();
-        self.typeCheckClasses();
-        self.typeCheckFunctions();
+    pub fn type_check(&self) {
+        self.type_check_vars();
+        self.type_check_classes();
+        self.type_check_functions();
     }
 
     fn is_allowed_type(&self, type_: &Type_) -> bool {

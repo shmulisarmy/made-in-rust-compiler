@@ -13,7 +13,7 @@ pub struct FunctionCall {
     pub params: Vec<Expression>,
 }
 
-pub fn OperatorToString(ep: &ExpressionPiece) -> &'static str {
+pub fn operator_to_string(ep: &ExpressionPiece) -> &'static str {
     if let ExpressionPiece::Operator(op) = ep {
         op
     } else {

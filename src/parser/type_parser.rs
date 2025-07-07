@@ -109,13 +109,13 @@ impl Type_ {
 }
 
 fn correct_coloring(s: &str) -> String {
-    if BUILTINs.contains(&s) {
+    if BUILTINS.contains(&s) {
         return blue(&s.to_string());
     } else {
         return green(&s.to_string());
     }
 }
-static BUILTINs: [&str; 5] = ["int", "string", "char", "bool", "void"];
+static BUILTINS: [&str; 5] = ["int", "string", "char", "bool", "void"];
 
 #[cfg(test)]
 mod tests {
