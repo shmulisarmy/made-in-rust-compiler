@@ -60,6 +60,36 @@ fn main() {
         }
 
 
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
         function do(){
             while (a + b){
                 a  = 9
@@ -79,6 +109,20 @@ fn main() {
         class Cat{
             string name
         }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
 
         function add(int a = 9, int b) Person<int?> {
             let int a = operation_map
@@ -107,13 +151,6251 @@ fn main() {
             }
         }
 
-        function main(int a){
-            do_stuff()
-        }
-        function do_stuff(){
         
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
         }
 
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+
+
+    function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+
+
+
+    function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+         function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
+    class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+
+            if a+b{
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+
+
+        function do(){
+            while (a + b){
+                a  = 9
+                b = 2
+            }
+        }
+
+        
+        class Person{
+            Car car
+            Cat age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        class Cat{
+            string name
+        }
+
+
+        class Engine{
+            int id
+            string repair_station
+        }
+
+        class Car{
+            Engine engine
+            int age = b + c * add(3*7)
+            string name = 'John Doe'
+            string email = \"hello world\"
+        }
+
+
+        function add(int a = 9, int b) Person<int?> {
+            let int a = operation_map
+            let *Person? shmuli = add()
+            let function<(int, char), void>? callback = 0
+
+            while (a + b){
+                a  = 9
+                b = 2
+
+                if a+b{
+                    a  = 9
+                    b = 2
+
+                    while (a + b){
+                        a  = 9
+                        b = 2
+                    }
+                }
+                
+            }
+    }
 
 
         

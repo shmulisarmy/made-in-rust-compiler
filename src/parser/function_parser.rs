@@ -45,7 +45,7 @@ impl Param {
     }
     fn preview_scan(t: &mut Tokenizer) {
         t.eat_spaces();
-        dbg!(t.current_char());
+        // dbg!(t.current_char());
         if !looks_like_type(t) {
             let next_token = t.next();
             t.user_error(
@@ -57,10 +57,7 @@ impl Param {
                 red("expected type found".to_string()),
                 next_token.value
             );
-        } else {
-            println!("yes");
         }
-        println!("done");
     }
 }
 
@@ -181,25 +178,25 @@ impl Function {
         for field in &self.body {
             match field {
                 ValidInCodeBlock::Expression(expression) => {
-                    println!("{:?}", expression);
+                    print!("{:?}\n", expression);
                 }
                 ValidInCodeBlock::FunctionCall(function_call) => {
-                    println!("{:?}", function_call);
+                    print!("{:?}\n", function_call);
                 }
                 ValidInCodeBlock::Var(var) => {
-                    println!("{:?}", var);
+                    print!("{:?}\n", var);
                 }
                 ValidInCodeBlock::JumpIndex(_) => {
-                    println!("{:?}", '}');
+                    print!("{:?}\n", '}');
                 }
                 ValidInCodeBlock::WhileStartMarker => {
-                    println!("while (");
+                    print!("while (\n");
                 }
                 ValidInCodeBlock::IfStartMarker => {
-                    println!("if (");
+                    print!("if (\n");
                 }
                 ValidInCodeBlock::HeadEndAndBodyStartMarker => {
-                    println!("){}", '{');
+                    print!("){}\n", '{');
                 }
             }
         }

@@ -95,10 +95,10 @@ impl Trie {
             current_node = self.storage[current_node].children[char_index];
             collected_letters.push(char);
             if self.storage[current_node].is_end {
-                let next_letter = word.chars().nth(index + 1);
+                let next_letter = word.as_bytes().get(index + 1);
                 let should_continue_and_get_longer_word = next_letter.is_some() && {
                     let next_char = next_letter.unwrap();
-                    let next_char_index = next_char as usize;
+                    let next_char_index = *next_char as usize;
                     next_char_index < 128
                         && self.storage[current_node].children[next_char_index] != 0
                 };

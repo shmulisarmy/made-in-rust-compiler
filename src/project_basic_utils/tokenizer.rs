@@ -27,14 +27,14 @@ impl Tokenizer {
         while self.in_range() && self.current_char().is_ascii_whitespace() {
             peek_index += 1;
         }
-        dbg!(peek_index);
-        dbg!(self.parse_index);
+        //dbg!(peek_index);
+        //dbg!(self.parse_index);
         return peek_index == self.code.len();
     }
 
     pub fn current_char(&self) -> char {
-        match self.code.chars().nth(self.parse_index) {
-            Some(c) => c,
+        match self.code.as_bytes().get(self.parse_index) {
+            Some(&byte) => byte as char,
             None => '\0',
         }
     }
@@ -52,7 +52,7 @@ impl Tokenizer {
 
     pub fn peek_next_word(&mut self) -> &str {
         let mut peek_index = self.parse_index;
-        while self.in_range() && self.code.chars().nth(peek_index).unwrap().is_alphabetic() {
+        while self.in_range() && self.code.as_bytes()[peek_index].is_ascii_alphabetic() {
             peek_index += 1;
         }
         return &self.code[self.parse_index..peek_index];
@@ -68,7 +68,7 @@ impl Tokenizer {
 
     pub fn peek_next_in(&mut self, chars: &Vec<char>) -> &str {
         let mut peek_index = self.parse_index;
-        while self.in_range() && chars.contains(&self.code.chars().nth(peek_index).unwrap()) {
+        while self.in_range() && chars.contains(&(self.code.as_bytes()[peek_index] as char)) {
             peek_index += 1;
         }
         return &self.code[self.parse_index..peek_index];
@@ -76,7 +76,7 @@ impl Tokenizer {
 
     pub fn expect_char(&mut self, letter: char) {
         self.eat_all_spaces();
-        dbg!(self.current_char());
+        //dbg!(self.current_char());
         if !self.in_range() {
             panic!("your at the end of the file in a position where you still need to parse");
         }
@@ -90,7 +90,7 @@ impl Tokenizer {
     pub fn expect_char_with_backups(&mut self, letter: char, backups: &[char; 1]) {
         //the assumption is that letter is the one that will get eaten and if so the tokenizer will consume that char, if not it will look at the backups first but not step forward
         self.eat_all_spaces();
-        dbg!(self.current_char());
+        //dbg!(self.current_char());
         if !self.in_range() {
             panic!("your at the end of the file in a position where you still need to parse");
         }
@@ -187,7 +187,7 @@ impl Tokenizer {
                 type_: TokenType::PUNCTUATION,
                 start_index: self.parse_index,
             };
-            dbg!(next_punc_len);
+            //dbg!(next_punc_len);
             self.parse_index += next_punc_len;
             return token;
         }
@@ -220,10 +220,9 @@ impl Tokenizer {
         panic!("not implemented");
     }
     pub fn expect(&mut self, type_: TokenType) -> &'static str {
-        println!("in expect ");
-        dbg!(&self.parse_index);
-        dbg!(&self.current_char());
-        dbg!(&type_);
+        //dbg!(&self.parse_index);
+        //dbg!(&self.current_char());
+        //dbg!(&type_);
         self.eat_all_spaces();
         if self.current_char() == ';' {
             self.user_error(self.parse_index, self.parse_index + 1);
@@ -249,9 +248,9 @@ impl Tokenizer {
                 {
                     self.parse_index += 1;
                 }
-                dbg!(start);
-                dbg!(self.parse_index);
-                dbg!(&self.code[start..self.parse_index]);
+                //dbg!(start);
+                //dbg!(self.parse_index);
+                //dbg!(&self.code[start..self.parse_index]);
                 if start == self.parse_index {
                     let next_token = &self.next();
                     self.user_error(
@@ -276,10 +275,10 @@ impl Tokenizer {
             }
             TokenType::OPERATOR => {
                 let next_operator_stream = self.peek_next_in(&OPERATORS);
-                dbg!(&next_operator_stream);
+                //dbg!(&next_operator_stream);
                 let next_operator_len =
                     OPERATORS_TRIE.the_most_we_can_collect_on_word(next_operator_stream);
-                dbg!(next_operator_len);
+                //dbg!(next_operator_len);
                 self.parse_index += next_operator_len;
             }
             TokenType::KEYWORD => {
@@ -340,7 +339,7 @@ impl Tokenizer {
         let mut line = 1;
         let mut column = 1;
         for i in 0..start_index {
-            if self.code.chars().nth(i) == Some('\n') {
+            if self.code.as_bytes()[i] == b'\n' {
                 line += 1;
                 column = 1;
             } else {
