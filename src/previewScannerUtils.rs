@@ -9,6 +9,9 @@ pub fn looks_like_type(t: &mut Tokenizer)->bool {
     if t.current_char().is_alphabetic() || t.current_char() == '_' {
         return true;
     }
+    if t.current_char() == '*' {
+        return true;
+    }
     if t.current_char() == '[' {
         return true;
     }

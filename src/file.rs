@@ -19,11 +19,15 @@ impl File{
                     name: "int".to_string(),
                     sub_types: Vec::new(),
                     is_optional: false,
+    is_pointer: false,
+
                 },
                 Type_ {
                     name: "string".to_string(),
                     sub_types: Vec::new(),
                     is_optional: false,
+    is_pointer: false,
+
                 },
             ],
         }

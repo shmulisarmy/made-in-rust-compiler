@@ -94,7 +94,7 @@ fn main() {
 
         function add(int a = 9, int b) Person<int?> {
             let int a = operation_map
-            let Person shmuli = add()
+            let *Person? shmuli = add()
             let function<(int, char), void>? callback = 0
 
             while (a + b){

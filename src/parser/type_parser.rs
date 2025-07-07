@@ -9,10 +9,12 @@ pub struct Type_ {
     pub name: String,
     pub sub_types: Vec<Type_>,
     pub is_optional: bool,
+    pub is_pointer: bool,
 }
 
 impl Type_ {
     pub fn new(t: &mut Tokenizer) -> Self {
+        let is_pointer = t.optionaly_expect_char('*');
         if t.optionaly_expect_char('[') {
             if t.optionaly_expect_char(']') {
                 //@example: []int which is an array of ints
@@ -20,6 +22,7 @@ impl Type_ {
                     name: "array".to_string(),
                     sub_types: vec![Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
+                    is_pointer,
                 };
             } else {
                 //@example: [string]int which is a map of strings to ints
@@ -29,6 +32,7 @@ impl Type_ {
                     name: "map".to_string(),
                     sub_types: vec![key_type, Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
+                    is_pointer,
                 };
                 return res;
             }
@@ -39,6 +43,7 @@ impl Type_ {
                 name: "tuple".to_string(),
                 sub_types: vec![],
                 is_optional: false,
+                is_pointer,
             };
             until!(t.optionaly_expect_char(')');{
                 res.sub_types.push(Type_::new(t));
@@ -54,6 +59,7 @@ impl Type_ {
             name: t.expect(TokenType::IDENTIFIER).to_string(),
             sub_types: vec![],
             is_optional: false,
+            is_pointer,
         };
         if t.optionaly_expect_char('<') {
             until!(t.optionaly_expect_char('>'); {

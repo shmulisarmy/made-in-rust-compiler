@@ -10,8 +10,6 @@ use crate::project_basic_utils::tokenizer::*;
 use crate::parser::type_parser::Type_;
 use crate::parser::var_parser::Var;
 use crate::utils::red;
-use crate::parser::while_parser::While;
-use crate::parser::If_parser::If;
 
 use crate::comp;
 
@@ -71,8 +69,6 @@ pub enum ValidInFunctionBody {
     Expression(Expression),
     FunctionCall(FunctionCall),
     Var(Var),
-    While(While),
-    If(If),
 }
 // we'e soon move this to its own file
 
@@ -97,6 +93,7 @@ impl Function {
                 name: "void".to_string(),
                 sub_types: Vec::new(),
                 is_optional: false,
+                is_pointer: false,
             }
         };
 
@@ -106,11 +103,11 @@ impl Function {
             body: Vec::new(),
             return_type,
         };
-        res.actual_parse_body(t);
+        res.parse_body(t);
         res
     }
 
-    fn actual_parse_body(&mut self, t: &mut Tokenizer)  {
+    fn parse_body(&mut self, t: &mut Tokenizer)  {
         t.expect_char('{');
         until!(t.optionaly_expect_char('}');{
             let next_ident = t.peek_next_word();
@@ -127,7 +124,7 @@ impl Function {
                         let expression = Expression::new(t, '¥', '{');
                         self.body.push(ValidInCodeBlock::Expression(expression));
                     }
-                    self.actual_parse_body(t);
+                    self.parse_body(t);
                     self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
                 }
                 "while" => {
@@ -140,7 +137,7 @@ impl Function {
                         let expression = Expression::new(t, '¥', '{');
                         self.body.push(ValidInCodeBlock::Expression(expression));
                     }
-                        self.actual_parse_body(t);
+                        self.parse_body(t);
                     self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
                 }
                 "const" => {
@@ -190,12 +187,6 @@ impl Function {
                 }
                 ValidInCodeBlock::Var(var) => {
                     println!("{:?}", var);
-                }
-                ValidInCodeBlock::While(while_) => {
-                    println!("{:?}", while_);
-                }
-                ValidInCodeBlock::If(if_) => {
-                    println!("{:?}", if_);
                 }
                 ValidInCodeBlock::JumpIndex(_) => {
                     println!("{:?}", '}');
