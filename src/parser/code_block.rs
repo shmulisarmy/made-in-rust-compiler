@@ -1,13 +1,6 @@
-use crate::file::*;
-use crate::parser::code_block;
 use crate::parser::expression::Expression;
 use crate::parser::expression::FunctionCall;
-use crate::parser::function_parser::ValidInFunctionBody;
-use crate::parser::type_parser::Type_;
 use crate::parser::var_parser::Var;
-use crate::project_basic_utils::token::TokenType;
-use crate::project_basic_utils::tokenizer::Tokenizer;
-use core::panic;
 
 /**
  *
@@ -16,7 +9,7 @@ use core::panic;
  *
  */
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub enum ValidInCodeBlock {
     Expression(Expression),
     FunctionCall(FunctionCall),

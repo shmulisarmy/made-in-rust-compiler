@@ -66,11 +66,6 @@ impl Param {
 
 use crate::parser::expression::FunctionCall;
 use crate::until;
-pub enum ValidInFunctionBody {
-    Expression(Expression),
-    FunctionCall(FunctionCall),
-    Var(Var),
-}
 // we'e soon move this to its own file
 
 pub struct Function {

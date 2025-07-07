@@ -1,8 +1,11 @@
 mod file;
 
+
+mod code_gen;
 mod previewScannerUtils;
 mod utils;
 use std::any::TypeId;
+use std::os;
 use std::sync::{LazyLock, Mutex};
 
 mod constants;
@@ -225,6 +228,16 @@ fn main() {
     }
 
     this_file.type_check();
+    let python_code = this_file.generate_python_code(0);
+
+
+
+    use std::fs::File as StdFile;
+    use std::io::Write;
+
+    let mut python_output_file = StdFile::create("ouput.py").expect("Unable to create file");
+    python_output_file.write_all(python_code.as_bytes()).expect("Unable to write data");
+
 
     // expression::Expression::new(&mut t, ',', '\n');
 }
