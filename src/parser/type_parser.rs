@@ -2,16 +2,19 @@ use crate::project_basic_utils::token::TokenType;
 use crate::project_basic_utils::tokenizer::Tokenizer;
 use crate::parser::expression::Expression;
 use crate::until;
+use crate::utils::{blue, green};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
 pub struct Type_ {
     pub name: String,
     pub sub_types: Vec<Type_>,
     pub is_optional: bool,
+    pub is_pointer: bool,
 }
 
 impl Type_ {
     pub fn new(t: &mut Tokenizer) -> Self {
+        let is_pointer = t.optionaly_expect_char('*');
         if t.optionaly_expect_char('[') {
             if t.optionaly_expect_char(']') {
                 //@example: []int which is an array of ints
@@ -19,6 +22,7 @@ impl Type_ {
                     name: "array".to_string(),
                     sub_types: vec![Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
+                    is_pointer,
                 };
             } else {
                 //@example: [string]int which is a map of strings to ints
@@ -28,6 +32,7 @@ impl Type_ {
                     name: "map".to_string(),
                     sub_types: vec![key_type, Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
+                    is_pointer,
                 };
                 return res;
             }
@@ -38,6 +43,7 @@ impl Type_ {
                 name: "tuple".to_string(),
                 sub_types: vec![],
                 is_optional: false,
+                is_pointer,
             };
             until!(t.optionaly_expect_char(')');{
                 res.sub_types.push(Type_::new(t));
@@ -53,6 +59,7 @@ impl Type_ {
             name: t.expect(TokenType::IDENTIFIER).to_string(),
             sub_types: vec![],
             is_optional: false,
+            is_pointer,
         };
         if t.optionaly_expect_char('<') {
             until!(t.optionaly_expect_char('>'); {
@@ -71,20 +78,20 @@ impl Type_ {
 
     pub fn to_string(&self) -> String {
         match self.sub_types.len() {
-            0 => return self.name.clone(),
-            1 => return format!("{}<type: {}>", self.name, self.sub_types[0].to_string()),
+            0 => return correct_coloring(&self.name),
+            1 => return format!("{}<{}>", correct_coloring(&self.name), self.sub_types[0].to_string()),
             2 => {
                 return format!(
-                    "{}<type: {}, type: {}>",
-                    self.name,
+                    "{}<{}, {}>",
+                    correct_coloring(&self.name),
                     self.sub_types[0].to_string(),
                     self.sub_types[1].to_string()
                 );
             }
             _ => {
                 return format!(
-                    "{}<type: {}, type: {}, type: {}>options = {}",
-                    self.name,
+                    "{}<{}, {}, {}> optional = {}",
+                    correct_coloring(&self.name),
                     self.sub_types[0].to_string(),
                     self.sub_types[1].to_string(),
                     self.sub_types[2].to_string(),
@@ -94,6 +101,18 @@ impl Type_ {
         }
     }
 }
+
+
+
+
+fn correct_coloring(s: &str) -> String {
+    if BUILTINs.contains(&s) {
+        return blue(&s.to_string());
+    } else {
+        return green(&s.to_string());
+    }
+}
+static BUILTINs: [&str; 5] = ["int", "string", "char", "bool", "void"];
 
 #[cfg(test)]
 mod tests {
@@ -105,7 +124,7 @@ mod tests {
             file_name: file!(),
             start_line: line!() as usize,
             code: "
-            Person<(int), [int]string<char>, []int>
+            Person<(int, char), [int]string<char>, []int>?
             "
             .to_string(),
             parse_index: 0,

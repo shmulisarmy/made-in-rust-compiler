@@ -301,7 +301,7 @@ impl<'a> Tokenizer<'a> {
         );
         let (line, column) = self.find_line_and_column(end_index);
         let error_location_link = format!("{}:{}:{}", self.file_name, self.start_line + line, column);
-        println!("{} {}", red("error".to_string()), blue(error_location_link));
+        println!("{} {}", red("error".to_string()), blue(&error_location_link));
         // panic!("stack trace view");
         // process::exit(1); // 1 means error; 0 means success
               
@@ -322,6 +322,8 @@ impl<'a> Tokenizer<'a> {
         return (line, column);     
     }
 }
+
+
 
 
 

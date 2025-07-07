@@ -1,3 +1,5 @@
+use std::string;
+
 use crate::parser::code_block::CodeBlock;
 use crate::parser::code_block::ValidInCodeBlock;
 use crate::parser::expression::Expression;
@@ -8,24 +10,20 @@ use crate::project_basic_utils::tokenizer::*;
 use crate::parser::type_parser::Type_;
 use crate::parser::var_parser::Var;
 use crate::utils::red;
-use crate::parser::while_parser::While;
-use crate::parser::If_parser::If;
 
 use crate::comp;
-
-use crate::SyntaxNode;
 
 #[derive(Debug)]
 pub struct Param {
     pub name: String,
-    pub type_: String,
+    pub type_: Type_,
     pub default_value: Expression,
 }
 
 impl Param {
     fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
-        let type_ = t.expect(TokenType::IDENTIFIER).to_string();
+        let type_ = Type_::new(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, ',', ')');
@@ -48,7 +46,6 @@ impl Param {
     fn preview_scan(t: &mut Tokenizer) {
         t.eat_spaces();
         dbg!(t.current_char());
-        println!("proo");
         if !looks_like_type(t) {
             let next_token = t.next();
             t.user_error(
@@ -72,8 +69,6 @@ pub enum ValidInFunctionBody {
     Expression(Expression),
     FunctionCall(FunctionCall),
     Var(Var),
-    While(While),
-    If(If),
 }
 // we'e soon move this to its own file
 
@@ -85,13 +80,7 @@ pub struct Function {
 }
 
 impl Function {
-    /// Creates a new Function node, pushes it to the parser context, parses the body, and pops it after parsing.
-    ///
-    /// # Context-walking logic (future):
-    /// To resolve a variable/type, iterate backwards through the context stack (Vec<SyntaxNode>),
-    /// checking each scope for the definition. The nearest enclosing scope wins. This enables
-    /// shadowing and proper scoping for variables/types.
-    pub fn new(t: &mut Tokenizer, parser_context: &mut Vec<SyntaxNode>) -> Self {
+    pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
         let name = t.expect(TokenType::IDENTIFIER).to_string();
         t.expect_char('(');
@@ -104,21 +93,75 @@ impl Function {
                 name: "void".to_string(),
                 sub_types: Vec::new(),
                 is_optional: false,
+                is_pointer: false,
             }
         };
 
-        parser_context.push(SyntaxNode::Function(Function {
+        let mut res = Self {
             name,
             params,
             body: Vec::new(),
             return_type,
-        }));
-        let mut node = match parser_context.pop().unwrap() {
-            SyntaxNode::Function(f) => f,
-            _ => unreachable!("Expected Function node on context stack"),
         };
-        node.parse_body(t, parser_context);
-        node
+        res.parse_body(t);
+        res
+    }
+
+    fn parse_body(&mut self, t: &mut Tokenizer)  {
+        for _ in 0..100000{
+            println!("this is the new type parse_body");
+        }
+        t.expect_char('{');
+        until!(t.optionaly_expect_char('}');{
+            let next_ident = t.peek_next_word();
+            if !next_ident.len() > 0 {
+            }
+            match next_ident {
+                "if" => {
+                    self.body.push(ValidInCodeBlock::IfStartMarker);
+                    let cur_body_stack_pos = self.body.len()-1;
+                    if t.optionaly_expect_char('(') {
+                        let expression = Expression::new(t, ')', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }  else {
+                        let expression = Expression::new(t, '¥', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }
+                    self.parse_body(t);
+                    self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
+                }
+                "while" => {
+                    self.body.push(ValidInCodeBlock::WhileStartMarker);
+                    let cur_body_stack_pos = self.body.len()-1;
+                    if t.optionaly_expect_char('(') {
+                        let expression = Expression::new(t, ')', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }  else {
+                        let expression = Expression::new(t, '¥', '{');
+                        self.body.push(ValidInCodeBlock::Expression(expression));
+                    }
+                        self.parse_body(t);
+                    self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
+                }
+                "const" => {
+                    t.expect(TokenType::IDENTIFIER);
+                    self.body.push(ValidInCodeBlock::Var(Var::new(t)));
+                },
+                "let" => {
+                    t.expect(TokenType::IDENTIFIER);
+                    self.body.push(ValidInCodeBlock::Var(Var::new(t)));
+                }
+                _ => {
+                    let expression = Expression::new(t, '\n', '}');
+                    self.body.push(ValidInCodeBlock::Expression(expression));
+                }
+                
+            }
+            t.eat_all_spaces();
+
+        })
+
+        
     }
     fn preview_scan(t: &mut Tokenizer) {
         use crate::previewScannerUtils::*;
@@ -134,7 +177,7 @@ impl Function {
     pub fn display(&self) {
         println!("Function {} (", self.name);
         for field in &self.params {
-            println!("    {} {},", field.type_, field.name);
+            println!("    {} {},", field.type_.name, field.name);
         }
         println!(")");
         for field in &self.body {
@@ -148,11 +191,17 @@ impl Function {
                 ValidInCodeBlock::Var(var) => {
                     println!("{:?}", var);
                 }
-                ValidInCodeBlock::While(while_) => {
-                    println!("{:?}", while_);
+                ValidInCodeBlock::JumpIndex(_) => {
+                    println!("{:?}", '}');
                 }
-                ValidInCodeBlock::If(if_) => {
-                    println!("{:?}", if_);
+                ValidInCodeBlock::WhileStartMarker => {
+                    println!("while (");
+                }
+                ValidInCodeBlock::IfStartMarker => {
+                    println!("if (");
+                }
+                ValidInCodeBlock::HeadEndAndBodyStartMarker => {
+                    println!("){}", '{');
                 }
             }
         }
@@ -171,29 +220,39 @@ impl CodeBlock for Function{
     fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock>{
         &mut self.body
     }
+
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::SyntaxNode;
 
     #[test]
     fn test_function_parser() {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "\nfunction sub(int a, int b){}\n\n\n\n".to_string(),
+            code: "
+            
+            function sub(int a, int b){}
+
+
+
+            "
+            .to_string(),
             parse_index: 0,
         };
-        let mut context = vec![];
+
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-        let _function = Function::new(&mut t, &mut context);
+
+        let _function = Function::new(&mut t);
         assert_eq!(_function.name, "sub");
+
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
-        assert_eq!(_function.params[1].type_, "int");
+
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
@@ -203,17 +262,25 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){}\n\n\n\n".to_string(),
+            code: "function sub(int a = 9, int b = 2 + 3){}
+
+
+
+            "
+            .to_string(),
             parse_index: 0,
         };
-        let mut context = vec![];
+
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-        let _function = Function::new(&mut t, &mut context);
+
+        let _function = Function::new(&mut t);
         assert_eq!(_function.name, "sub");
+
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
-        assert_eq!(_function.params[1].type_, "int");
+
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
@@ -222,18 +289,31 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "function sub(int a = 9, int b = 2 + 3){\n                const int a = 9\n                let int b = 2\n                a = b+9\n            }\n\n\n\n            ".to_string(),
+            code: "function sub(int a = 9, int b = 2 + 3){
+                const int a = 9
+                let int b = 2
+                a = b+9
+            }
+
+
+
+            "
+            .to_string(),
             parse_index: 0,
         };
-        let mut context = vec![];
+
         assert_eq!(t.expect(TokenType::KEYWORD), "function");
-        let _function = Function::new(&mut t, &mut context);
+
+        let _function = Function::new(&mut t);
         assert_eq!(_function.name, "sub");
+
         assert_eq!(_function.params.len(), 2);
-        assert_eq!(_function.params[0].type_, "int");
+        assert_eq!(_function.params[0].type_.name, "int");
         assert_eq!(_function.params[0].name, "a");
-        assert_eq!(_function.params[1].type_, "int");
+
+        assert_eq!(_function.params[1].type_.name, "int");
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
+   
 }
