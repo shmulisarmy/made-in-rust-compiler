@@ -1,9 +1,11 @@
 
 use crate::parser::expression::Expression;
 use crate::parser::expression::ExpressionPiece;
+use crate::parser::function_parser::Function;
 use crate::parser::type_parser::Type_;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
+use crate::until;
 use crate::utils::red;
 
 use crate::comp;
@@ -41,16 +43,30 @@ impl Field {
 pub struct Class {
     pub name: &'static str,
     pub fields: Vec<Field>,
+    pub methods: Vec<Function>,
 }
 
 impl Class {
     pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
-        let name = t.expect(TokenType::IDENTIFIER);
+        let mut res = Self {
+            name: t.expect(TokenType::IDENTIFIER),
+            fields: vec![],
+            methods: vec![],
+        };
         t.expect_char('{');
         t.eat_all_spaces();
-        let fields = comp![Field::new(t); until t.optionaly_expect_char('}')];
-        Self { name, fields }
+        until!(t.optionaly_expect_char('}'); {
+            t.eat_all_spaces();
+            if t.peek_next_word() == "function" {
+                t.next(); //eat up the 'function' keyword
+                res.methods.push(Function::new(t));
+            } else {
+                res.fields.push(Field::new(t));
+            }
+            t.eat_all_spaces(); 
+        });
+        res
     }
 
     pub fn display(&self) {

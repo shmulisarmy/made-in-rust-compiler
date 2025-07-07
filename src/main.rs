@@ -48,21 +48,6 @@ fn main() {
         start_line: line!() as usize,
         code: "
         
-
-
-        class Engine{
-            Container<Tag> stickers
-            string repair_station
-        }
-
-        class Car{
-            Engine engine
-            int age = b + c * add(3*7)
-            string name = 'John Doe'
-            string email = \"hello world\"
-        }
-
-
         function add(int a = 9, int b) Person<int?> {
             let int a = operation_map
             let *Person? shmuli = add()
@@ -93,30 +78,24 @@ fn main() {
         
 
 
-        function do(){
+        function do_some_stuff(){
             while (a + b){
                 a  = 9
                 b = 2
             }
         }
 
-        
-        class Person{
-            Car car
-            Cat age = b + c * add(3*7)
-            string name = 'John Doe'
-            string email = \"hello world\"
-        }
-
-
-        class Cat{
-            string name
-        }
-
 
         class Engine{
             int id
             string repair_station
+
+            function vroom(){
+                }
+            function fix(){
+            }
+
+           
         }
 
         class Car{
@@ -124,66 +103,12 @@ fn main() {
             int age = b + c * add(3*7)
             string name = 'John Doe'
             string email = \"hello world\"
-        }
 
-
-        function add(int a = 9, int b) Person<int?> {
-            let int a = operation_map
-            let *Person? shmuli = add()
-            let function<(int, char), void>? callback = 0
-
-            while (a + b){
-                a  = 9
-                b = 2
-
-                if a+b{
-                    a  = 9
-                    b = 2
-
-                    while (a + b){
-                        a  = 9
-                        b = 2
-                    }
-                }
-                
-            }
-
-            if a+b{
-                a  = 9
-                b = 2
+            function drive(){
+                vroom()
             }
         }
-
-        
-
-
-        function do(){
-            while (a + b){
-                a  = 9
-                b = 2
-            }
-        }
-
-        
         class Person{
-            Car car
-            Cat age = b + c * add(3*7)
-            string name = 'John Doe'
-            string email = \"hello world\"
-        }
-
-
-        class Cat{
-            string name
-        }
-
-
-        class Engine{
-            int id
-            string repair_station
-        }
-
-        class Car{
             Engine engine
             int age = b + c * add(3*7)
             string name = 'John Doe'
@@ -229,14 +154,20 @@ fn main() {
 
     this_file.type_check();
     let python_code = this_file.generate_python_code(0);
+    let js_code = this_file.generate_javascript_code(0);
+    // let cpp_code = this_file.generate_cpp_code(0);
 
-
+    
 
     use std::fs::File as StdFile;
     use std::io::Write;
 
     let mut python_output_file = StdFile::create("ouput.py").expect("Unable to create file");
+    let mut javascript_output_file = StdFile::create("ouput.js").expect("Unable to create file");
+    // let mut cpp_output_file = StdFile::create("ouput.cpp").expect("Unable to create file");
     python_output_file.write_all(python_code.as_bytes()).expect("Unable to write data");
+    javascript_output_file.write_all(js_code.as_bytes()).expect("Unable to write data");
+    // cpp_output_file.write_all(cpp_code.as_bytes()).expect("Unable to write data");
 
 
     // expression::Expression::new(&mut t, ',', '\n');
