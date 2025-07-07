@@ -1,12 +1,12 @@
+use crate::parser::expression::Expression;
 use crate::project_basic_utils::token::TokenType;
 use crate::project_basic_utils::tokenizer::Tokenizer;
-use crate::parser::expression::Expression;
 use crate::until;
 use crate::utils::{blue, green};
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
 pub struct Type_ {
-    pub name: String,
+    pub name: &'static str,
     pub sub_types: Vec<Type_>,
     pub is_optional: bool,
     pub is_pointer: bool,
@@ -19,7 +19,7 @@ impl Type_ {
             if t.optionaly_expect_char(']') {
                 //@example: []int which is an array of ints
                 return Self {
-                    name: "array".to_string(),
+                    name: "array",
                     sub_types: vec![Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
                     is_pointer,
@@ -29,7 +29,7 @@ impl Type_ {
                 let key_type = Type_::new(t);
                 t.expect_char(']');
                 let res = Self {
-                    name: "map".to_string(),
+                    name: "map",
                     sub_types: vec![key_type, Type_::new(t)],
                     is_optional: t.optionaly_expect_char('?'),
                     is_pointer,
@@ -40,7 +40,7 @@ impl Type_ {
 
         if t.optionaly_expect_char('(') {
             let mut res = Self {
-                name: "tuple".to_string(),
+                name: "tuple",
                 sub_types: vec![],
                 is_optional: false,
                 is_pointer,
@@ -56,7 +56,7 @@ impl Type_ {
         }
 
         let mut res = Self {
-            name: t.expect(TokenType::IDENTIFIER).to_string(),
+            name: t.expect(TokenType::IDENTIFIER),
             sub_types: vec![],
             is_optional: false,
             is_pointer,
@@ -79,7 +79,13 @@ impl Type_ {
     pub fn to_string(&self) -> String {
         match self.sub_types.len() {
             0 => return correct_coloring(&self.name),
-            1 => return format!("{}<{}>", correct_coloring(&self.name), self.sub_types[0].to_string()),
+            1 => {
+                return format!(
+                    "{}<{}>",
+                    correct_coloring(&self.name),
+                    self.sub_types[0].to_string()
+                );
+            }
             2 => {
                 return format!(
                     "{}<{}, {}>",
@@ -102,9 +108,6 @@ impl Type_ {
     }
 }
 
-
-
-
 fn correct_coloring(s: &str) -> String {
     if BUILTINs.contains(&s) {
         return blue(&s.to_string());
@@ -125,8 +128,7 @@ mod tests {
             start_line: line!() as usize,
             code: "
             Person<(int, char), [int]string<char>, []int>?
-            "
-            .to_string(),
+            ",
             parse_index: 0,
         };
 

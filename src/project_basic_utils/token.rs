@@ -17,6 +17,6 @@ pub enum TokenType {
 #[derive(Debug, Clone)]
 pub struct Token {
     pub type_: TokenType,
-    pub value: String,
+    pub value: &'static str,
     pub start_index: Int,
 }

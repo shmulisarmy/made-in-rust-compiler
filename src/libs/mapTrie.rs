@@ -74,8 +74,12 @@ impl MapTrie {
     }
 
     pub fn greety(&self, word: &str) -> String {
+        return word[0..self.the_most_we_can_collect_on_word(word)].to_string();
+    }
+    pub fn the_most_we_can_collect_on_word(&self, word: &str) -> usize {
         let mut current_node = self.root;
-        let mut collected_letters = Vec::new();
+        // let mut collected_letters = Vec::new();
+        // let mut the_most_we_can_collect: usize = 0; //used i instead as it natrually gets incremented as we traverse the tree
         let chars: Vec<char> = word.chars().collect();
 
         for (i, &ch) in chars.iter().enumerate() {
@@ -84,15 +88,14 @@ impl MapTrie {
                 panic!("we don't have this word");
             }
             current_node = *next.unwrap();
-            collected_letters.push(ch);
 
             if self.storage[current_node].is_end {
                 if let Some(&next_ch) = chars.get(i + 1) {
                     if !self.storage[current_node].children.contains_key(&next_ch) {
-                        return collected_letters.iter().collect();
+                        return i + 1;
                     }
                 } else {
-                    return collected_letters.iter().collect();
+                    return i + 1;
                 }
             }
         }

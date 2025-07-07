@@ -1,5 +1,5 @@
-use crate::parser::expression::Expression;
 use crate::libs::linkedList::*;
+use crate::parser::expression::Expression;
 
 #[cfg(test)]
 mod tests {
@@ -39,8 +39,8 @@ fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeInd
     if double_next.is_none() {
         return false;
     }
-    if let ExpressionPiece::Operator(two_down_op) = &ll.storage[double_next.unwrap()].value {
-        if let ExpressionPiece::Operator(this_op) = &ll.storage[node_index].value {
+    if let ExpressionPiece::Operator(two_down_op) = ll.storage[double_next.unwrap()].value {
+        if let ExpressionPiece::Operator(this_op) = ll.storage[node_index].value {
             let double_next_precedence = OPERATOR_PRECEDENCE.get(two_down_op).unwrap();
             let this_onces_precedence = OPERATOR_PRECEDENCE.get(this_op).unwrap();
             return this_onces_precedence < double_next_precedence;

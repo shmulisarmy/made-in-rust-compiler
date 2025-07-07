@@ -5,8 +5,11 @@ use std::sync::Mutex;
 
 pub static SPACE_CHARS: LazyLock<Vec<char>> = LazyLock::new(|| vec![' ', '\t', '\n', '\r']);
 
-pub static OPERATORS: LazyLock<Vec<char>> =
-    LazyLock::new(|| vec!['+', '-', '*', '/', '%', '=', '!', '&', '|']);
+pub static OPERATORS: LazyLock<Vec<char>> = LazyLock::new(|| {
+    vec![
+        '+', '-', '*', '/', '%', '=', '!', '&', '|', '<', '>', '^', '~',
+    ]
+});
 
 pub static KEYWORDS_TRIE: LazyLock<Trie> = LazyLock::new(|| {
     let mut trie = Trie::new();
@@ -73,9 +76,7 @@ pub static OPERATORS_TRIE: LazyLock<MapTrie> = LazyLock::new(|| {
 
 pub static PUNCTUATION_TRIE: LazyLock<MapTrie> = LazyLock::new(|| {
     let mut trie = MapTrie::new();
-    let punctuation = vec![
-        ",", ";", ":", "@", "#", "$", "`", "!"
-    ];
+    let punctuation = vec![",", ";", ":", "@", "#", "$", "`", "!"];
 
     for punct in punctuation {
         trie.insert(&punct.to_string());

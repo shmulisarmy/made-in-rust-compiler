@@ -33,7 +33,6 @@
 //     }
 // }
 
-
 // impl CodeBlock for While{
 //     fn get_body(&self) -> & Vec<ValidInCodeBlock>{
 //         &self.body
@@ -43,7 +42,7 @@
 //         &mut self.body
 
 //     }
-    
+
 // }
 
 // #[cfg(test)]

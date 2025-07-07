@@ -4,18 +4,18 @@ use crate::parser::code_block::CodeBlock;
 use crate::parser::code_block::ValidInCodeBlock;
 use crate::parser::expression::Expression;
 use crate::parser::expression::ExpressionPiece;
+use crate::parser::type_parser::Type_;
+use crate::parser::var_parser::Var;
 use crate::previewScannerUtils::looks_like_type;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
-use crate::parser::type_parser::Type_;
-use crate::parser::var_parser::Var;
 use crate::utils::red;
 
 use crate::comp;
 
 #[derive(Debug)]
 pub struct Param {
-    pub name: String,
+    pub name: &'static str,
     pub type_: Type_,
     pub default_value: Expression,
 }
@@ -24,7 +24,7 @@ impl Param {
     fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
         let type_ = Type_::new(t);
-        let name = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER);
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, ',', ')');
             t.eat_all_spaces();
@@ -50,9 +50,13 @@ impl Param {
             let next_token = t.next();
             t.user_error(
                 next_token.start_index,
-                next_token.start_index + next_token.value.len()
+                next_token.start_index + next_token.value.len(),
             );
-            panic!("{} {}", red("expected type found".to_string()), next_token.value);
+            panic!(
+                "{} {}",
+                red("expected type found".to_string()),
+                next_token.value
+            );
         } else {
             println!("yes");
         }
@@ -61,7 +65,6 @@ impl Param {
 }
 
 // we'e soon move this to its own file
-
 
 use crate::parser::expression::FunctionCall;
 use crate::until;
@@ -73,7 +76,7 @@ pub enum ValidInFunctionBody {
 // we'e soon move this to its own file
 
 pub struct Function {
-    pub name: String,
+    pub name: &'static str,
     pub params: Vec<Param>,
     pub body: Vec<ValidInCodeBlock>,
     pub return_type: Type_,
@@ -82,7 +85,7 @@ pub struct Function {
 impl Function {
     pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
-        let name = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER);
         t.expect_char('(');
         let params = comp![Param::new(t); until t.optionaly_expect_char(')')];
 
@@ -90,7 +93,7 @@ impl Function {
             Type_::new(t)
         } else {
             Type_ {
-                name: "void".to_string(),
+                name: "void",
                 sub_types: Vec::new(),
                 is_optional: false,
                 is_pointer: false,
@@ -107,10 +110,7 @@ impl Function {
         res
     }
 
-    fn parse_body(&mut self, t: &mut Tokenizer)  {
-        for _ in 0..100000{
-            println!("this is the new type parse_body");
-        }
+    fn parse_body(&mut self, t: &mut Tokenizer) {
         t.expect_char('{');
         until!(t.optionaly_expect_char('}');{
             let next_ident = t.peek_next_word();
@@ -155,13 +155,11 @@ impl Function {
                     let expression = Expression::new(t, '\n', '}');
                     self.body.push(ValidInCodeBlock::Expression(expression));
                 }
-                
+
             }
             t.eat_all_spaces();
 
         })
-
-        
     }
     fn preview_scan(t: &mut Tokenizer) {
         use crate::previewScannerUtils::*;
@@ -208,19 +206,15 @@ impl Function {
         self.return_type.display();
         println!("}}");
     }
-
-    
 }
 
-
-impl CodeBlock for Function{
-    fn get_body(&self) -> & Vec<ValidInCodeBlock>{
+impl CodeBlock for Function {
+    fn get_body(&self) -> &Vec<ValidInCodeBlock> {
         &self.body
     }
-    fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock>{
+    fn body_ptr(&mut self) -> &mut Vec<ValidInCodeBlock> {
         &mut self.body
     }
-
 }
 
 #[cfg(test)]
@@ -238,8 +232,7 @@ mod tests {
 
 
 
-            "
-            .to_string(),
+            ",
             parse_index: 0,
         };
 
@@ -266,8 +259,7 @@ mod tests {
 
 
 
-            "
-            .to_string(),
+            ",
             parse_index: 0,
         };
 
@@ -297,8 +289,7 @@ mod tests {
 
 
 
-            "
-            .to_string(),
+            ",
             parse_index: 0,
         };
 
@@ -315,5 +306,4 @@ mod tests {
         assert_eq!(_function.params[1].name, "b");
         _function.display();
     }
-   
 }

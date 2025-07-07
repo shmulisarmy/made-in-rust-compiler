@@ -1,14 +1,13 @@
 use crate::parser::expression::Expression;
 use crate::parser::expression::ExpressionPiece;
+use crate::parser::type_parser::Type_;
 use crate::project_basic_utils::token::*;
 use crate::project_basic_utils::tokenizer::*;
-use crate::parser::type_parser::Type_;
 use crate::utils::red;
-
 
 #[derive(Debug, Clone, PartialEq, Eq, Ord, PartialOrd)]
 pub struct Var {
-    pub name: String,
+    pub name: &'static str,
     pub type_: Type_,
     pub default_value: Expression,
 }
@@ -17,7 +16,7 @@ impl Var {
     pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
         let type_ = Type_::new(t);
-        let name = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER);
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, '\n', '}'); //} is bc for now this appears in a function body wich ends with }
             t.eat_all_spaces();
@@ -54,24 +53,21 @@ impl Var {
     }
 }
 
-
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::parser::expression::Expression;
+    use crate::parser::expression::ExpressionPiece;
+    use crate::parser::type_parser::Type_;
     use crate::project_basic_utils::token::TokenType;
     use crate::project_basic_utils::tokenizer::Tokenizer;
-    use crate::parser::type_parser::Type_;
-    use crate::parser::expression::ExpressionPiece;
-    use crate::parser::expression::Expression;
 
     #[test]
     fn test_var_with_default_value() {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "int a = 42\n".to_string(),
+            code: "int a = 42\n",
             parse_index: 0,
         };
 
@@ -90,7 +86,7 @@ mod tests {
         let mut t = Tokenizer {
             file_name: file!(),
             start_line: line!() as usize,
-            code: "int b\n".to_string(),
+            code: "int b\n",
             parse_index: 0,
         };
 
@@ -99,7 +95,7 @@ mod tests {
         assert_eq!(var.type_.name, "int");
         // The default_value should be a placeholder
         match &var.default_value {
-            Expression(ExpressionPiece::Placeholder(false)) => {},
+            Expression(ExpressionPiece::Placeholder(false)) => {}
             _ => panic!("Should be placeholder"),
         }
     }
@@ -113,8 +109,7 @@ mod tests {
                 const []int  a = 9
 
 
-            "
-            .to_string(),
+            ",
             parse_index: 0,
         };
 

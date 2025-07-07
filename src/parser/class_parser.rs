@@ -12,7 +12,7 @@ use crate::until;
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 pub struct Field {
-    pub name: String,
+    pub name: &'static str,
     pub type_: Type_,
     pub default_value: Expression,
 }
@@ -20,7 +20,7 @@ pub struct Field {
 impl Field {
     fn new(t: &mut Tokenizer) -> Self {
         let type_ = Type_::new(t);
-        let name = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER);
         if t.optionaly_expect_char('=') {
             let default_value = Expression::new(t, '\n', '\n');
             t.eat_all_spaces();
@@ -41,14 +41,14 @@ impl Field {
 }
 
 pub struct Class {
-    pub name: String,
+    pub name: &'static str,
     pub fields: Vec<Field>,
 }
 
 impl Class {
     pub fn new(t: &mut Tokenizer) -> Self {
         Self::preview_scan(t);
-        let name = t.expect(TokenType::IDENTIFIER).to_string();
+        let name = t.expect(TokenType::IDENTIFIER);
         t.expect_char('{');
         t.eat_all_spaces();
         let fields = comp![Field::new(t); until t.optionaly_expect_char('}')];
@@ -89,8 +89,7 @@ mod tests {
             int age
             string name
             string email
-        }"
-            .to_string(),
+        }",
             parse_index: 0,
         };
 

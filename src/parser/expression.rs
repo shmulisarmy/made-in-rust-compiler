@@ -9,20 +9,20 @@ use crate::until;
 // Define FunctionCall here since it's used in this module
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
 pub struct FunctionCall {
-    pub name: String,
+    pub name: &'static str,
     pub params: Vec<Expression>,
 }
 
-pub fn OperatorToString(ep: &ExpressionPiece) -> String {
+pub fn OperatorToString(ep: &ExpressionPiece) -> &'static str {
     if let ExpressionPiece::Operator(op) = ep {
-        op.clone()
+        op
     } else {
         panic!("not an operator");
     }
 }
 
 impl FunctionCall {
-    fn new(name: String, params: Vec<Expression>) -> Self {
+    fn new(name: &'static str, params: Vec<Expression>) -> Self {
         Self { name, params }
     }
 }
@@ -30,10 +30,10 @@ impl FunctionCall {
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Ord, PartialOrd)]
 pub enum ExpressionPiece {
     FunctionCall(FunctionCall),
-    Variable(String),
-    StringLiteral(String),
-    NumberLiteral(String),
-    Operator(String),
+    Variable(&'static str),
+    StringLiteral(&'static str),
+    NumberLiteral(&'static str),
+    Operator(&'static str),
     Placeholder(bool),
 }
 
@@ -54,7 +54,6 @@ impl Expression {
             }
         );
 
-
         //display
         println!("about to display expression tokens");
         let mut cur = tokens.head;
@@ -70,8 +69,6 @@ impl Expression {
             cur = tokens.storage[node_index].next;
         }
         println!("done displaying expression tokens");
-        
-
 
         // by scope_ender we make sure that when we do the check we don't eat up the char bc we want the parent syntaxNode to see and know to stop
         // println!("about to display expression tokens");
@@ -91,7 +88,6 @@ impl Expression {
             return Self(ExpressionPiece::Placeholder(true));
         }
 
-            
         dbg!(&tokens.storage[tokens.head.unwrap()].value);
         println!("done parsing expression");
         Self(tokens.storage[tokens.head.unwrap()].value.clone())

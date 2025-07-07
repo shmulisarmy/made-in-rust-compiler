@@ -5,9 +5,7 @@ mod utils;
 use std::any::TypeId;
 use std::sync::{LazyLock, Mutex};
 
-
 mod constants;
-
 
 mod parser;
 mod precedence_order;
@@ -15,11 +13,8 @@ mod project_basic_utils;
 
 mod libs;
 
-
-
 use project_basic_utils::token::*;
 use project_basic_utils::tokenizer::*;
-
 
 use parser::function_parser::*;
 use parser::var_parser::Var;
@@ -36,19 +31,12 @@ use parser::var_parser::Var;
 //     // NumberLiteral(Literal),
 // }
 
-use parser::expression::Expression;
 use parser::class_parser::Class;
+use parser::expression::Expression;
 
 use crate::file::File;
 use crate::parser::code_block::{self, ValidInCodeBlock};
 use crate::parser::type_parser::Type_;
-
-
-
-
-
-
-
 
 fn main() {
     color_backtrace::install();
@@ -130,13 +118,10 @@ fn main() {
 
         
 
-        "
-        .to_string(),
+        ",
         parse_index: 0,
     };
     // function add(int a = 9, int b = sub(3*7))
-
-
 
     let mut this_file = File::new();
 
@@ -169,7 +154,6 @@ fn main() {
         }
         t.eat_all_spaces();
     }
-
 
     this_file.typeCheck();
 
