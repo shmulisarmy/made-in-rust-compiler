@@ -52,7 +52,7 @@ class Engine{
 }
 
 
-class 1Person{
+class Person{
     int id
     string repair_station
 }

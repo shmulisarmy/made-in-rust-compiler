@@ -295,9 +295,11 @@ impl FileTokens {
 
     pub fn generate_cpp_code(&self, depth: usize) -> String {
         let mut output = String::new();
+
+        
         
         // Include the header file
-        output.push_str("#include \"file.hpp\"\n\n");
+        output.push_str(format!("#include \"{}.hpp\"\n\n",self.get_base_file_name()).as_str());
         
         // Generate global variable definitions
         for var in &self.variables {

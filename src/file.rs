@@ -133,7 +133,6 @@ impl File {
                 );
             }
 
-            let code_block_context: Vec<&dyn CodeBlock> = vec![function];
         }
     }
 
@@ -195,9 +194,13 @@ impl File {
         
     }
 
+    pub fn get_base_file_name(&self) -> String {
+        self.tokenizer.file_name.split('.').collect::<Vec<_>>()[0].to_string()
+    }
+
     pub fn output_code_from_syntax_tree(&self) {
         
-        let file_base_name = self.tokenizer.file_name.split(".").next().unwrap();
+        let file_base_name = self.get_base_file_name();
 
 
         let js_code = self.generate_javascript_code(0);
