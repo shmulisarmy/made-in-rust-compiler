@@ -119,11 +119,14 @@ static BUILTINS: [&str; 5] = ["int", "string", "char", "bool", "void"];
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Mutex;
+
     use super::*;
 
     #[test]
     fn basic_test() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "

@@ -55,6 +55,8 @@ impl Var {
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Mutex;
+
     use super::*;
     use crate::parser::expression::Expression;
     use crate::parser::expression::ExpressionPiece;
@@ -65,6 +67,7 @@ mod tests {
     #[test]
     fn test_var_with_default_value() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "int a = 42\n",
@@ -84,6 +87,7 @@ mod tests {
     #[test]
     fn test_var_without_default_value() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "int b\n",
@@ -103,6 +107,7 @@ mod tests {
     #[test]
     fn post_type_system_upgrade_var_test() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "

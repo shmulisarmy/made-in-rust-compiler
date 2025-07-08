@@ -92,11 +92,14 @@ impl Class {
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Mutex;
+
     use super::*;
 
     #[test]
     fn test_class_parser() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "class Person{

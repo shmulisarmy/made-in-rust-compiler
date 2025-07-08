@@ -11,6 +11,9 @@ use crate::utils::red;
 type Int = usize;
 
 pub struct Tokenizer {
+    pub mutex: Mutex<()>, /**
+        the assumption is that when you call some kind of tokenizing function you already have the tokenizer unlocked
+    */
     pub file_name: &'static str,
     pub start_line: Int,
     pub code: &'static str,
@@ -324,7 +327,7 @@ impl Tokenizer {
         );
         let (line, column) = self.find_line_and_column(end_index);
         let error_location_link =
-            format!("{}:{}:{}", self.file_name, self.start_line + line, column);
+            format!("{}:{}:{}", self.file_name, line, column);
         println!(
             "{} {}",
             red("error".to_string()),
@@ -334,7 +337,7 @@ impl Tokenizer {
 
     //ui methods
     pub fn find_line_and_column(&self, start_index: Int) -> (Int, Int) {
-        let mut line = 1;
+        let mut line = self.start_line;
         let mut column = 1;
         for i in 0..start_index {
             if self.code.as_bytes()[i] == b'\n' {

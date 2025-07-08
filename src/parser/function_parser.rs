@@ -212,11 +212,14 @@ impl CodeBlock for Function {
 
 #[cfg(test)]
 mod tests {
+    use std::sync::Mutex;
+
     use super::*;
 
     #[test]
     fn test_function_parser() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "
@@ -246,6 +249,7 @@ mod tests {
     #[test]
     fn test_function_parser_that_having_default_values_dont_break_it() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "function sub(int a = 9, int b = 2 + 3){}
@@ -272,6 +276,7 @@ mod tests {
     #[test]
     fn test_that_parsing_function_body_doesnt_panic() {
         let mut t = Tokenizer {
+            mutex: Mutex::new(()),
             file_name: file!(),
             start_line: line!() as usize,
             code: "function sub(int a = 9, int b = 2 + 3){
