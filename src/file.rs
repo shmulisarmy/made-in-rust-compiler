@@ -166,22 +166,22 @@ impl File {
             match self.tokenizer.expect(TokenType::KEYWORD) {
                 "class" => {
                     let _class = Class::new(&mut self.tokenizer);
-                    (&_class).display();
+                    // (&_class).display(); //for debug like info
                     self.classes.push(_class);
                 }
                 "function" => {
                     let _function = Function::new(&mut self.tokenizer);
-                    (&_function).display();
+                    // (&_function).display(); //for debug like info
                     self.functions.push(_function);
                 }
                 "const" => {
                     let _var = Var::new(&mut self.tokenizer);
-                    (&_var).display();
+                    // (&_var).display(); //for debug like info
                     self.variables.push(_var);
                 }
                 "let" => {
                     let _var = Var::new(&mut self.tokenizer);
-                    (&_var).display();
+                    // (&_var).display(); //for debug like info
                     self.variables.push(_var);
                 }
                 token_string => {
@@ -198,10 +198,6 @@ impl File {
     pub fn output_code_from_syntax_tree(&self) {
         
         let file_base_name = self.tokenizer.file_name.split(".").next().unwrap();
-
-
-
-        dbg!(file_base_name);
 
 
         let js_code = self.generate_javascript_code(0);

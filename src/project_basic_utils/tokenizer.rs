@@ -320,7 +320,7 @@ impl Tokenizer {
     //ui methods
     pub fn user_error(&self, start_index: Int, end_index: Int) {
         println!(
-            "{}\x1b[31;4m--{}--\x1b[0m{}",
+            "{}\x1b[31;4m{}\x1b[0m{}",
             &self.code[..start_index],
             &self.code[start_index..end_index],
             &self.code[end_index..]
@@ -333,6 +333,7 @@ impl Tokenizer {
             red("error".to_string()),
             blue(&error_location_link)
         );
+        std::process::exit(1);
     }
 
     //ui methods

@@ -4,7 +4,6 @@ mod file;
 mod code_gen;
 mod previewScannerUtils;
 mod utils;
-use std::any::TypeId;
 use std::{fs, os};
 use std::sync::{LazyLock, Mutex};
 
@@ -60,7 +59,6 @@ static FILES_TO_COMPILE: LazyLock<Vec<Mutex<File>>> = LazyLock::new(|| {
 
 fn main() {
     color_backtrace::install();
-
 
     let mut running_threads = vec![];
     
