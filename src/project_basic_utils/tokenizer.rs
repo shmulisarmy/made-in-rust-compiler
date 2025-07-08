@@ -330,8 +330,6 @@ impl Tokenizer {
             red("error".to_string()),
             blue(&error_location_link)
         );
-        // panic!("stack trace view");
-        // process::exit(1); // 1 means error; 0 means success
     }
 
     //ui methods

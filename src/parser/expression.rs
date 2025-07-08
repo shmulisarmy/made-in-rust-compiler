@@ -5,6 +5,7 @@ use crate::project_basic_utils::tokenizer::*;
 
 use crate::comp;
 use crate::until;
+use crate::utils::red;
 
 // Define FunctionCall here since it's used in this module
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Default, Ord, PartialOrd)]
@@ -47,11 +48,15 @@ impl Expression {
         use crate::libs::linkedList::*;
         let mut tokens = LinkedList::new();
 
+
+        let expression_start_index = t.parse_index;
+        
         until!(
             t.optionaly_expect_char(separator) || t.current_char() == scope_ender; {
                 tokens.append(parse_next_expression_piece(t));
             }
         );
+        let expression_end_index = t.parse_index;
 
     
 
@@ -64,7 +69,14 @@ impl Expression {
         let mut current = tokens.head;
         while let Some(node_index) = current {
             if let ExpressionPiece::Operator(op) = &tokens.storage[node_index].value {
-                absorb_neighbors(&mut tokens, node_index);
+                let result_type = absorb_neighbors(&mut tokens, node_index);
+                match result_type {
+                    Ok(()) => {},
+                    Err(error) => {
+                        t.user_error(expression_start_index, expression_end_index);
+                        panic!("{}", red(error));
+                    }
+                }
             }
             current = tokens.storage[node_index].next;
         }

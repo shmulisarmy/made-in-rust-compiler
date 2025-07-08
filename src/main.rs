@@ -153,7 +153,6 @@ fn main() {
     }
 
     this_file.type_check();
-    let python_code = this_file.generate_python_code(0);
     let js_code = this_file.generate_javascript_code(0);
     let cpp_header_file = this_file.generate_cpp_header_file();
     let cpp_code = this_file.generate_cpp_code(0);
@@ -167,11 +166,9 @@ fn main() {
     // Create output directory if it doesn't exist
     fs::create_dir_all("output").expect("Unable to create output directory");
 
-    let mut python_output_file = StdFile::create("output/file.py").expect("Unable to create file");
     let mut javascript_output_file = StdFile::create("output/file.js").expect("Unable to create file");
     let mut cpp_header_output_file = StdFile::create("output/file.hpp").expect("Unable to create file");
     let mut cpp_code_output_file = StdFile::create("output/file.cpp").expect("Unable to create file");
-    python_output_file.write_all(python_code.as_bytes()).expect("Unable to write data");
     javascript_output_file.write_all(js_code.as_bytes()).expect("Unable to write data");
     cpp_header_output_file.write_all(cpp_header_file.as_bytes()).expect("Unable to write data");
     cpp_code_output_file.write_all(cpp_code.as_bytes()).expect("Unable to write data");

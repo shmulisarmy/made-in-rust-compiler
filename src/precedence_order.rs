@@ -49,25 +49,31 @@ fn two_down_is_greater(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeInd
     false
 }
 
-pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) {
+pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIndex) ->Result<(), String> {
     while two_down_is_greater(ll, node_index) {
-        absorb_neighbors(ll, ll.get_two_down(node_index).unwrap());
+        absorb_neighbors(ll, ll.get_two_down(node_index).unwrap())?
     }
 
     let prev = ll.storage[node_index].prev;
+    if  prev.is_none() {
+        return Err("there must be some kind of value/expression before an operator".to_string());
+    }
     let next = ll.storage[node_index].next;
+    if next.is_none() {
+        return Err("there must be some kind of value/expression after an operator".to_string());
+    }
     ll.storage[node_index].value = ExpressionPiece::FunctionCall(FunctionCall {
         name: operator_to_string(&ll.storage[node_index].value),
         params: vec![
             Expression(
                 ll.storage
-                    [prev.expect("there must be some kind of value/expression before an operator")]
+                    [prev.unwrap()] //we can unwrap because we checked that prev is not none
                 .value
                 .clone(),
             ),
             Expression(
                 ll.storage
-                    [next.expect("there must be some kind of value/expression after an operator")]
+                    [next.unwrap()] //we can unwrap because we checked that prev is not none
                 .value
                 .clone(),
             ),
@@ -75,4 +81,5 @@ pub fn absorb_neighbors(ll: &mut LinkedList<ExpressionPiece>, node_index: NodeIn
     });
     ll.remove(prev.unwrap());
     ll.remove(next.unwrap());
+    Ok(())
 }
