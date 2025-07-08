@@ -41,6 +41,12 @@ impl Tokenizer {
             None => '\0',
         }
     }
+    pub fn next_char(&self) -> char {
+        match self.code.as_bytes().get(self.parse_index+1) {
+            Some(&byte) => byte as char,
+            None => '\0',
+        }
+    }
 
     pub fn eat_spaces(&mut self) {
         while self.in_range() && (self.current_char() == ' ' || self.current_char() == '\t') {
@@ -50,7 +56,21 @@ impl Tokenizer {
     pub fn eat_all_spaces(&mut self) {
         while self.in_range() && SPACE_CHARS.contains(&self.current_char()) {
             self.parse_index += 1;
+            if self.looks_like_at_comment() {
+                self.eat_comment();
+            }
         }
+    }
+
+
+    pub fn looks_like_at_comment(&self) -> bool {
+        self.in_range() && self.current_char() != '/' && self.next_char() == '/'
+    }
+
+    pub fn eat_comment(&mut self) {
+        while self.in_range() && self.current_char() != '\n' {
+            self.parse_index += 1;
+        } 
     }
 
     pub fn peek_next_word(&mut self) -> &str {
