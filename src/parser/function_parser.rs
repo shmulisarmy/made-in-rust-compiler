@@ -107,10 +107,9 @@ impl Function {
         t.expect_char('{');
         until!(t.optionaly_expect_char('}');{
             let next_ident = t.peek_next_word();
-            if !next_ident.len() > 0 {
-            }
             match next_ident {
                 "if" => {
+                    t.next();
                     self.body.push(ValidInCodeBlock::IfStartMarker);
                     let cur_body_stack_pos = self.body.len()-1;
                     if t.optionaly_expect_char('(') {
@@ -124,6 +123,7 @@ impl Function {
                     self.body.push(ValidInCodeBlock::JumpIndex(cur_body_stack_pos));
                 }
                 "while" => {
+                    t.next();
                     self.body.push(ValidInCodeBlock::WhileStartMarker);
                     let cur_body_stack_pos = self.body.len()-1;
                     if t.optionaly_expect_char('(') {

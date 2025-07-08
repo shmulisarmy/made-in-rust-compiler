@@ -54,6 +54,7 @@ impl Tokenizer {
     }
 
     pub fn peek_next_word(&mut self) -> &str {
+        self.eat_all_spaces();
         let mut peek_index = self.parse_index;
         while self.in_range() && self.code.as_bytes()[peek_index].is_ascii_alphabetic() {
             peek_index += 1;
@@ -306,6 +307,9 @@ impl Tokenizer {
                 assert!(self.parse_index == self.code.len());
             }
         }
+        if start == self.parse_index {
+            self.user_error(self.parse_index, self.parse_index + 1);
+        } 
         return &self.code[start..self.parse_index];
     }
 
